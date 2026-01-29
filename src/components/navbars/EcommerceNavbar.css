@@ -1,0 +1,85 @@
+.ecommerce-topbar {
+  background: #ffffff;
+}
+
+.container-small {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.ecommerce-navbar {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.search-input {
+  padding-right: 40px;
+}
+
+.icon-indicator {
+  position: relative;
+}
+
+.icon-indicator-number {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.icon-indicator-sm .icon-indicator-number {
+  width: 8px;
+  height: 8px;
+  top: 2px;
+  right: 2px;
+}
+
+.icon-indicator-danger .icon-indicator-number {
+  background: #dc2626;
+}
+
+.category-dropdown-menu {
+  min-width: 600px;
+  max-width: 800px;
+}
+
+.bg-body-highlight-hover:hover {
+  background: #f8f9fa;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .category-dropdown-menu {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}

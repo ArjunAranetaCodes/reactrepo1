@@ -14,7 +14,10 @@ function ProductCards() {
   // Set permissions to "Read" only
   const CONSUMER_KEY = import.meta.env.VITE_WC_CONSUMER_KEY || '';
   const CONSUMER_SECRET = import.meta.env.VITE_WC_CONSUMER_SECRET || '';
-  const API_BASE_URL = 'http://localhost/headless2/wp-json/wc/v3/products';
+  // Prefer online backend if provided, otherwise fall back to local
+  const API_BASE_URL =
+    import.meta.env.VITE_WC_PRODUCTS_URL ||
+    'http://localhost/headless2/wp-json/wc/v3/products';
 
   useEffect(() => {
     fetchProducts();

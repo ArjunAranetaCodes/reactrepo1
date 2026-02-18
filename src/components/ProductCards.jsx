@@ -110,7 +110,7 @@ function ProductCards() {
     return (
       <Container className="error-container py-5">
         <Alert variant="danger">
-          <Alert.Heading>Error loading products</Alert.Heading>
+          <Alert.Heading>Error loading product</Alert.Heading>
           <p>{error}</p>
           <p className="mb-0">
             Make sure your WordPress site is running and the WooCommerce REST API is accessible at:

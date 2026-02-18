@@ -1,7 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../../headless2"
+			"path": "../../xampp/htdocs/headless2"
+		},
+		{
+			"path": "."
 		}
 	],
 	"settings": {}

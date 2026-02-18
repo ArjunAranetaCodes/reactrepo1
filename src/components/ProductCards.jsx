@@ -9,58 +9,57 @@ function ProductCards() {
   const [error, setError] = useState(null);
   const { addToCart } = useCart();
 
-  // WooCommerce REST API credentials
-  // Get these from: WooCommerce → Settings → Advanced → REST API → Add Key
-  // Set permissions to "Read" only
-  const CONSUMER_KEY = import.meta.env.VITE_WC_CONSUMER_KEY || '';
-  const CONSUMER_SECRET = import.meta.env.VITE_WC_CONSUMER_SECRET || '';
-  // Prefer online backend if provided, otherwise fall back to local
-  const API_BASE_URL =
-    import.meta.env.VITE_WC_PRODUCTS_URL ||
-    'http://localhost/headless2/wp-json/wc/v3/products';
+  // Headless endpoint disabled – using dummy cleaning products
+  const USE_DUMMY_PRODUCTS = true;
+
+  const DUMMY_PRODUCTS = [
+    { id: 1, name: 'All-Purpose Cleaner', price: '4.99', regular_price: '4.99', sale_price: '', on_sale: false, featured: true, stock_status: 'instock', permalink: '#', short_description: 'Tough on grease and grime, safe on surfaces. Lemon scent.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=All-Purpose+Cleaner' }] },
+    { id: 2, name: 'Glass & Mirror Spray', price: '5.49', regular_price: '6.99', sale_price: '5.49', on_sale: true, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Streak-free shine for windows and mirrors.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Glass+Spray' }] },
+    { id: 3, name: 'Bathroom Scrub', price: '6.29', regular_price: '6.29', sale_price: '', on_sale: false, featured: true, stock_status: 'instock', permalink: '#', short_description: 'Removes soap scum and hard water stains.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Bathroom+Scrub' }] },
+    { id: 4, name: 'Floor Cleaner Concentrate', price: '8.99', regular_price: '8.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'One bottle makes 20+ gallons. Works on tile and laminate.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Floor+Cleaner' }] },
+    { id: 5, name: 'Disinfecting Wipes', price: '7.99', regular_price: '7.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Kills 99.9% of germs. Pack of 75 wipes.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Disinfecting+Wipes' }] },
+    { id: 6, name: 'Dish Soap', price: '3.49', regular_price: '3.49', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Gentle on hands, cuts through grease. 24 oz.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Dish+Soap' }] },
+    { id: 7, name: 'Multi-Surface Spray', price: '5.99', regular_price: '5.99', sale_price: '', on_sale: false, featured: true, stock_status: 'instock', permalink: '#', short_description: 'Kitchen, bathroom, and more. Fresh lavender.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Multi-Surface' }] },
+    { id: 8, name: 'Stainless Steel Polish', price: '9.99', regular_price: '11.99', sale_price: '9.99', on_sale: true, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Restores shine and repels fingerprints.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Steel+Polish' }] },
+    { id: 9, name: 'Carpet Freshener', price: '6.99', regular_price: '6.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Eliminates odors between deep cleans.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Carpet+Freshener' }] },
+    { id: 10, name: 'Drain Cleaner', price: '4.49', regular_price: '4.49', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Unclogs sinks and tubs. Safe for pipes.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Drain+Cleaner' }] },
+    { id: 11, name: 'Microfiber Cloth Set', price: '12.99', regular_price: '12.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Pack of 12. Lint-free, reusable.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Microfiber+Set' }] },
+    { id: 12, name: 'Oven Cleaner', price: '7.49', regular_price: '7.49', sale_price: '', on_sale: false, featured: false, stock_status: 'outofstock', permalink: '#', short_description: 'Heavy-duty formula for baked-on grease.', description: '', images: [{ src: 'https://via.placeholder.com/400x300?text=Oven+Cleaner' }] },
+  ];
 
   useEffect(() => {
-    fetchProducts();
+    if (USE_DUMMY_PRODUCTS) {
+      setProducts(DUMMY_PRODUCTS);
+      setError(null);
+      setLoading(false);
+    } else {
+      fetchProducts();
+    }
   }, []);
 
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      
-      // Build URL with query parameters
-      const params = new URLSearchParams({
-        per_page: '12',
-        status: 'publish'
-      });
-
+      const CONSUMER_KEY = import.meta.env.VITE_WC_CONSUMER_KEY || '';
+      const CONSUMER_SECRET = import.meta.env.VITE_WC_CONSUMER_SECRET || '';
+      const API_BASE_URL =
+        import.meta.env.VITE_WC_PRODUCTS_URL ||
+        'http://localhost/headless2/wp-json/wc/v3/products';
+      const params = new URLSearchParams({ per_page: '12', status: 'publish' });
       let url = `${API_BASE_URL}?${params.toString()}`;
-      
-      // Prepare headers for authentication
-      const headers = {
-        'Content-Type': 'application/json',
-      };
-
-      // Add authentication if credentials are provided (optional - public access is enabled via filter)
+      const headers = { 'Content-Type': 'application/json' };
       if (CONSUMER_KEY && CONSUMER_SECRET) {
-        // WooCommerce REST API supports query string authentication
         const authParams = new URLSearchParams({
           consumer_key: CONSUMER_KEY,
           consumer_secret: CONSUMER_SECRET
         });
         url = `${url}&${authParams.toString()}`;
       }
-      
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: headers
-      });
-      
+      const response = await fetch(url, { method: 'GET', headers });
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('API Error Response:', errorData);
         throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
-      
       const data = await response.json();
       setProducts(data);
       setError(null);
@@ -137,7 +136,7 @@ function ProductCards() {
             </ol>
           </p>
           <hr />
-          <Button variant="outline-danger" onClick={fetchProducts}>
+          <Button variant="outline-danger" onClick={() => { if (USE_DUMMY_PRODUCTS) { setProducts(DUMMY_PRODUCTS); setError(null); } else fetchProducts(); }}>
             Retry
           </Button>
         </Alert>
@@ -151,7 +150,7 @@ function ProductCards() {
         <div className="text-center">
           <h2>No products found</h2>
           <p>There are no products available at the moment.</p>
-          <Button variant="primary" onClick={fetchProducts} className="mt-3">
+          <Button variant="primary" onClick={() => (USE_DUMMY_PRODUCTS ? setProducts(DUMMY_PRODUCTS) : fetchProducts())} className="mt-3">
             Refresh
           </Button>
         </div>

@@ -1,7 +1,7 @@
 /**
  * Shop 1 – Cleaning products (product images in public/shop1/)
  */
-export const name = 'Fresh Clean Co.';
+export const name = 'Spark & Shine';
 export const slug = 'shop1';
 export const imageBasePath = '/shop1';
 

@@ -21,7 +21,7 @@ const Logo = ({ width = 27, text = true, textClass, className }) => {
       </div>
       {text && (
         <p className={classNames(textClass, 'logo-text ms-2 mb-0 fw-bold')} style={{ fontSize: '1.25rem' }}>
-          Phoenix
+          Spark & Shine
         </p>
       )}
     </div>

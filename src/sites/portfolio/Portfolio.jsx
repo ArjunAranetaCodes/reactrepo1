@@ -3,7 +3,28 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 import { shopSlugs, getShopConfig } from '../shops';
+import shop1Thumb from '../thumbnails/shop1.png';
+import shop2Thumb from '../thumbnails/shop2.png';
+import shop3Thumb from '../thumbnails/shop3.png';
+import shop4Thumb from '../thumbnails/shop4.png';
+import companyWebsiteThumb from '../thumbnails/company-website.png';
+import terraNovaThumb from '../thumbnails/terra-nova.png';
+import healthCenterThumb from '../thumbnails/health-center.png';
+import softLandingThumb from '../thumbnails/soft-landing.png';
+import cloudSyncThumb from '../thumbnails/cloud-sync.png';
 import './Portfolio.css';
+
+const THUMBNAILS = {
+  shop1: shop1Thumb,
+  shop2: shop2Thumb,
+  shop3: shop3Thumb,
+  shop4: shop4Thumb,
+  'company-website': companyWebsiteThumb,
+  'travel-site': terraNovaThumb,
+  services1: healthCenterThumb,
+  services2: softLandingThumb,
+  services3: cloudSyncThumb,
+};
 
 const SKILLS = [
   { name: 'WordPress', text: 'Themes, plugins, and headless setups.', icon: '📝' },
@@ -21,14 +42,14 @@ const SITES = [
       category: 'STORES',
       url: `/${slug}`,
       internal: true,
-      image: `https://via.placeholder.com/400x280/6b7c9a/fff?text=${encodeURIComponent(config.name)}`,
+      image: THUMBNAILS[slug] ?? `https://via.placeholder.com/400x280/6b7c9a/fff?text=${encodeURIComponent(config.name)}`,
     };
   }),
-  { id: 'company-website', title: 'Green Energy', category: 'COMPANY', url: '/company-website', internal: true, image: 'https://via.placeholder.com/400x280/63b54c/fff?text=Green+Energy' },
-  { id: 'travel-site', title: 'Terra Nova', category: 'TRAVEL', url: '/travel-site', internal: true, image: 'https://via.placeholder.com/400x280/148aa8/fff?text=Terra+Nova' },
-  { id: 'services1', title: 'Health Center', category: 'SERVICES', url: '/services1', internal: true, image: 'https://via.placeholder.com/400x280/a5c422/fff?text=Health+Center' },
-  { id: 'services2', title: 'Soft Landing', category: 'SERVICES', url: '/services2', internal: true, image: 'https://via.placeholder.com/400x280/29ca8e/fff?text=Soft+Landing' },
-  { id: 'services3', title: 'CloudSync', category: 'SERVICES', url: '/services3', internal: true, image: 'https://via.placeholder.com/400x280/6366f1/fff?text=CloudSync' },
+  { id: 'company-website', title: 'Green Energy', category: 'COMPANY', url: '/company-website', internal: true, image: THUMBNAILS['company-website'] ?? 'https://via.placeholder.com/400x280/63b54c/fff?text=Green+Energy' },
+  { id: 'travel-site', title: 'Terra Nova', category: 'TRAVEL', url: '/travel-site', internal: true, image: THUMBNAILS['travel-site'] ?? 'https://via.placeholder.com/400x280/148aa8/fff?text=Terra+Nova' },
+  { id: 'services1', title: 'Health Center', category: 'SERVICES', url: '/services1', internal: true, image: THUMBNAILS.services1 ?? 'https://via.placeholder.com/400x280/a5c422/fff?text=Health+Center' },
+  { id: 'services2', title: 'Soft Landing', category: 'SERVICES', url: '/services2', internal: true, image: THUMBNAILS.services2 ?? 'https://via.placeholder.com/400x280/29ca8e/fff?text=Soft+Landing' },
+  { id: 'services3', title: 'CloudSync', category: 'SERVICES', url: '/services3', internal: true, image: THUMBNAILS.services3 ?? 'https://via.placeholder.com/400x280/6366f1/fff?text=CloudSync' },
 ];
 
 const SOCIAL_LINKS = [

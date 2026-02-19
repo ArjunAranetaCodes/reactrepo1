@@ -6,7 +6,7 @@ function AppNavbar() {
     <Navbar expand="lg" className="custom-navbar fixed-top">
       <Container>
         <Navbar.Brand href="/" className="navbar-brand-custom">
-          <span className="brand-text">Phoenix</span>
+          <span className="brand-text">Spark & Shine</span>
           <span className="brand-subtext">Store</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

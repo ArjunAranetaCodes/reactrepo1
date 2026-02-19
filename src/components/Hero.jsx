@@ -9,7 +9,7 @@ function Hero() {
           <div className="hero-slide hero-slide-1">
             <Container>
               <div className="hero-content">
-                <h1 className="hero-title">Welcome to Phoenix Store</h1>
+                <h1 className="hero-title">Welcome to Spark & Shine</h1>
                 <p className="hero-subtitle">Discover Amazing Products at Unbeatable Prices</p>
                 <div className="hero-buttons">
                   <Button variant="light" size="lg" className="hero-btn-primary">

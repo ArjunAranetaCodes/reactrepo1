@@ -8,7 +8,7 @@ function Footer() {
         <Row className="footer-content">
           <Col md={4} className="mb-4 mb-md-0">
             <h5 className="footer-brand">
-              <span className="brand-text">Phoenix</span>
+              <span className="brand-text">Spark & Shine</span>
               <span className="brand-subtext">Store</span>
             </h5>
             <p className="footer-description">
@@ -67,7 +67,7 @@ function Footer() {
           <Col>
             <div className="footer-bottom">
               <p className="copyright">
-                &copy; {new Date().getFullYear()} Phoenix Store. All rights reserved.
+                &copy; {new Date().getFullYear()} Spark & Shine. All rights reserved.
               </p>
             </div>
           </Col>

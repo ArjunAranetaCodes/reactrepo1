@@ -1,0 +1,20 @@
+/*
+Theme Name: Electro Music Shop
+Theme URI: https://example.com/electro-music-shop
+Description: A premium WordPress theme for music shops, converted from the Electro HTML template. Features modern design, WooCommerce integration, responsive layout, and beautiful product displays. Perfect for music stores, instrument shops, and audio equipment retailers.
+Author: Your Name
+Author URI: https://example.com
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: electro-music-shop
+Requires at least: 5.8
+Requires PHP: 7.4
+Tags: e-commerce, shop, music, woocommerce, responsive, custom-header, custom-menu, featured-images, threaded-comments, translation-ready
+
+Electro Music Shop WordPress Theme, Copyright 2025
+Based on Electro HTML Template by HTML Codex
+*/
+
+/* Import the main stylesheet from css folder */
+@import url('css/style.css');

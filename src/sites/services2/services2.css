@@ -1,0 +1,611 @@
+/* Services2 – 2106 Soft Landing React. Scoped under .services2-root */
+.services2-root {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', -apple-system, sans-serif;
+  background: #f9f9f9;
+  color: #202020;
+  --s2-green: #29ca8e;
+  --s2-dark: #202020;
+  --s2-text: #757575;
+  --s2-border: #f0f0f0;
+}
+
+.services2-root *,
+.services2-root *::before,
+.services2-root *::after {
+  box-sizing: inherit;
+}
+
+.services2-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Nav – transparent over hero, then solid on scroll (we keep solid for simplicity) */
+.services2-root .services2-nav {
+  background: rgba(41, 46, 73, 0.95);
+  padding: 25px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.services2-root .services2-nav .services2-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.services2-root .services2-logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+.services2-root .services2-logo:hover {
+  color: var(--s2-green);
+}
+
+.services2-root .services2-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.services2-root .services2-nav-links a {
+  color: rgba(255,255,255,.9);
+  font-size: 1rem;
+  padding: 8px 22px;
+  text-decoration: none;
+  display: block;
+}
+
+.services2-root .services2-nav-links a:hover {
+  color: var(--s2-green);
+}
+
+.services2-root .services2-nav-email span {
+  opacity: 0.9;
+}
+
+/* Back bar */
+.services2-root .services2-back-bar {
+  background: #fff;
+  padding: 8px 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--s2-border);
+}
+
+.services2-root .services2-back-link {
+  color: #575757;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.services2-root .services2-back-link:hover {
+  color: var(--s2-green);
+}
+
+/* Hero */
+.services2-root .services2-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 0 4rem;
+  background: url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80) no-repeat center center;
+  background-size: cover;
+  text-align: center;
+}
+
+.services2-root .services2-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #292E49, #536976);
+  opacity: 0.9;
+}
+
+.services2-root .services2-hero .services2-container {
+  position: relative;
+  z-index: 1;
+}
+
+.services2-root .services2-hero-content h3 {
+  color: rgba(255,255,255,.95);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.services2-root .services2-hero-content h1 {
+  color: #fff;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 300;
+  margin: 10px 0 40px;
+}
+
+.services2-root .services2-hero-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.services2-root .services2-hero-input {
+  flex: 1;
+  min-width: 200px;
+  height: 50px;
+  padding: 0 20px;
+  border: 1px solid var(--s2-border);
+  border-radius: 50px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.services2-root .services2-hero-btn {
+  height: 50px;
+  padding: 0 28px;
+  background: var(--s2-green);
+  border: 0;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.services2-root .services2-hero-btn:hover {
+  background: var(--s2-dark);
+  color: #fff;
+}
+
+.services2-root .services2-hero-success {
+  color: rgba(255,255,255,.95);
+  font-size: 1.1rem;
+}
+
+/* Feature */
+.services2-root .services2-feature {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.services2-root .services2-section-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0 0 2rem;
+  padding-bottom: 40px;
+  color: #202020;
+}
+
+.services2-root .services2-section-title-center {
+  text-align: center;
+}
+
+.services2-root .services2-feature-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: end;
+}
+
+@media (max-width: 992px) {
+  .services2-root .services2-feature-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services2-root .services2-tabs {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.services2-root .services2-tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #999;
+  font-size: 1.1rem;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.services2-root .services2-tab-btn:hover,
+.services2-root .services2-tab-active {
+  color: #202020;
+  border-bottom-color: var(--s2-green);
+}
+
+.services2-root .services2-tab-item {
+  margin: 20px 0;
+}
+
+.services2-root .services2-tab-item h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  color: #353535;
+}
+
+.services2-root .services2-tab-item p {
+  margin: 0;
+  color: var(--s2-text);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.services2-root .services2-feature-image {
+  height: 320px;
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+/* About / Team */
+.services2-root .services2-about {
+  padding: 100px 0;
+  background: #f9f9f9;
+}
+
+.services2-root .services2-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+@media (max-width: 768px) {
+  .services2-root .services2-team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services2-root .services2-team-card {
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.services2-root .services2-team-up .services2-team-info::after,
+.services2-root .services2-team-down .services2-team-info::before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.services2-root .services2-team-up .services2-team-info::after {
+  border-bottom: 15px solid #fff;
+  position: relative;
+  top: -15px;
+}
+
+.services2-root .services2-team-down .services2-team-info::before {
+  border-top: 15px solid #fff;
+  position: relative;
+  bottom: -15px;
+}
+
+.services2-root .services2-team-img {
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+}
+
+.services2-root .services2-team-info {
+  padding: 40px;
+  position: relative;
+}
+
+.services2-root .services2-team-info h2 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  color: #353535;
+}
+
+.services2-root .services2-team-info small {
+  display: block;
+  font-size: 1rem;
+  margin: 0 0 12px;
+  color: var(--s2-text);
+}
+
+.services2-root .services2-team-info p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--s2-text);
+}
+
+/* Testimonial */
+.services2-root .services2-testimonial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 65vh;
+}
+
+@media (max-width: 768px) {
+  .services2-root .services2-testimonial {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services2-root .services2-testimonial-image {
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+}
+
+.services2-root .services2-testimonial-content {
+  background: var(--s2-dark);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.services2-root .services2-testimonial-content .services2-section-title {
+  color: #fff;
+  padding-bottom: 24px;
+}
+
+.services2-root .services2-testimonial-quote {
+  color: #d9d9d9;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  border: none;
+  padding: 0;
+}
+
+.services2-root .services2-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.services2-root .services2-testimonial-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background-size: cover;
+  background-position: center;
+}
+
+.services2-root .services2-testimonial-author h4 {
+  color: #d9d9d9;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.services2-root .services2-testimonial-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.services2-root .services2-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.services2-root .services2-dot.services2-dot-active,
+.services2-root .services2-dot:hover {
+  background: var(--s2-green);
+  border-color: var(--s2-green);
+}
+
+/* Pricing */
+.services2-root .services2-pricing {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.services2-root .services2-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 2px solid var(--s2-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .services2-root .services2-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services2-root .services2-pricing-card {
+  padding: 20px 40px 24px;
+  border-right: 2px solid var(--s2-border);
+  background: #fff;
+}
+
+.services2-root .services2-pricing-card:last-child {
+  border-right: none;
+}
+
+.services2-root .services2-pricing-title h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  color: #353535;
+}
+
+.services2-root .services2-pricing-info {
+  border-top: 2px solid var(--s2-border);
+  border-bottom: 2px solid var(--s2-border);
+  padding: 20px 0;
+  margin: 0 0 20px;
+}
+
+.services2-root .services2-pricing-info p {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--s2-text);
+}
+
+.services2-root .services2-pricing-price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.services2-root .services2-btn {
+  display: inline-block;
+  background: var(--s2-green);
+  color: #fff;
+  border: 0;
+  border-radius: 50px;
+  font-size: 1rem;
+  padding: 12px 30px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.services2-root .services2-btn:hover {
+  background: var(--s2-dark);
+  color: #fff;
+}
+
+/* Contact */
+.services2-root .services2-contact {
+  padding: 100px 0;
+  background: #fff;
+  text-align: center;
+}
+
+.services2-root .services2-contact-success {
+  color: var(--s2-green);
+  font-size: 1.1rem;
+}
+
+.services2-root .services2-contact-form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.services2-root .services2-contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .services2-root .services2-contact-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services2-root .services2-input {
+  padding: 14px 20px;
+  border: 1px solid var(--s2-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.services2-root .services2-input:focus {
+  outline: none;
+  border-color: var(--s2-green);
+}
+
+.services2-root .services2-textarea {
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  margin-bottom: 0;
+}
+
+.services2-root .services2-submit-btn {
+  background: var(--s2-green);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.services2-root .services2-submit-btn:hover {
+  background: var(--s2-dark);
+  color: #fff;
+}
+
+/* Footer */
+.services2-root .services2-footer {
+  padding: 40px 0;
+  background: #fff;
+  border-top: 1px solid var(--s2-border);
+}
+
+.services2-root .services2-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.services2-root .services2-copyright {
+  margin: 0;
+  font-size: 14px;
+  color: var(--s2-text);
+}
+
+.services2-root .services2-copyright a {
+  color: var(--s2-text);
+  text-decoration: none;
+}
+
+.services2-root .services2-copyright a:hover {
+  color: var(--s2-green);
+}
+
+.services2-root .services2-social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.services2-root .services2-social a {
+  color: #202020;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.services2-root .services2-social a:hover {
+  color: var(--s2-green);
+}

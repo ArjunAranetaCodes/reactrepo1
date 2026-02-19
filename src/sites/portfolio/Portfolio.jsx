@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
+import { shopSlugs, getShopConfig } from '../shops';
 import './Portfolio.css';
 
 const SKILLS = [
@@ -10,13 +11,24 @@ const SKILLS = [
   { name: 'Java', text: 'Backend services, APIs, and enterprise applications.', icon: '☕' },
 ];
 
+// Build SITES from shop configs + company sites + any external links
 const SITES = [
-  { id: 'phoenix', title: 'Phoenix Store', category: 'STORES', url: '/shop', internal: true, image: 'https://via.placeholder.com/400x280/7c8db5/fff?text=Phoenix+Shop' },
-  { id: 'mountain', title: 'Mountain App', category: 'MOBILE APP', url: '#', internal: false, image: 'https://via.placeholder.com/400x280/7c8db5/fff?text=Mountain+App' },
-  { id: 'recipes', title: 'Recipes site', category: 'WEB DESIGN', url: '#', internal: false, image: 'https://via.placeholder.com/400x280/7c8db5/fff?text=Recipes+Site' },
-  { id: 'fashion', title: 'Fashion Store', category: 'STORES', url: '#', internal: false, image: 'https://via.placeholder.com/400x280/7c8db5/fff?text=Fashion+Store' },
-  { id: 'interior', title: 'Interior Studio', category: 'WEB DESIGN', url: '#', internal: false, image: 'https://via.placeholder.com/400x280/7c8db5/fff?text=Interior+Studio' },
-  { id: 'personal', title: 'Personal website', category: 'WEB DESIGN', url: '#', internal: false, image: 'https://via.placeholder.com/400x280/7c8db5/fff?text=Personal+Site' },
+  ...shopSlugs.map((slug) => {
+    const config = getShopConfig(slug);
+    return {
+      id: slug,
+      title: config.name,
+      category: 'STORES',
+      url: `/${slug}`,
+      internal: true,
+      image: `https://via.placeholder.com/400x280/6b7c9a/fff?text=${encodeURIComponent(config.name)}`,
+    };
+  }),
+  { id: 'company-website', title: 'Green Energy', category: 'COMPANY', url: '/company-website', internal: true, image: 'https://via.placeholder.com/400x280/63b54c/fff?text=Green+Energy' },
+  { id: 'travel-site', title: 'Terra Nova', category: 'TRAVEL', url: '/travel-site', internal: true, image: 'https://via.placeholder.com/400x280/148aa8/fff?text=Terra+Nova' },
+  { id: 'services1', title: 'Health Center', category: 'SERVICES', url: '/services1', internal: true, image: 'https://via.placeholder.com/400x280/a5c422/fff?text=Health+Center' },
+  { id: 'services2', title: 'Soft Landing', category: 'SERVICES', url: '/services2', internal: true, image: 'https://via.placeholder.com/400x280/29ca8e/fff?text=Soft+Landing' },
+  { id: 'services3', title: 'CloudSync', category: 'SERVICES', url: '/services3', internal: true, image: 'https://via.placeholder.com/400x280/6366f1/fff?text=CloudSync' },
 ];
 
 const SOCIAL_LINKS = [
@@ -37,14 +49,13 @@ function Portfolio() {
 
   return (
     <div className="portfolio-page">
-      {/* Hero — full-width banner */}
       <section id="about" className="portfolio-hero">
         <div className="portfolio-hero-banner">
           <Container>
             <div className="portfolio-hero-content">
               <h1 className="portfolio-hero-title">From Concept to Launch</h1>
               <p className="portfolio-hero-subtitle">Let&apos;s work together</p>
-              <Button as={Link} to="/shop" variant="primary" size="lg" className="portfolio-hero-btn">
+              <Button as={Link} to="/shop1" variant="primary" size="lg" className="portfolio-hero-btn">
                 HIRE US NOW →
               </Button>
               <div className="portfolio-hero-social">
@@ -59,7 +70,6 @@ function Portfolio() {
         </div>
       </section>
 
-      {/* Skills cards — no section label */}
       <section className="portfolio-skills">
         <Container>
           <Row className="g-4 justify-content-center">
@@ -78,7 +88,6 @@ function Portfolio() {
         </Container>
       </section>
 
-      {/* Our Works — 6 project cards */}
       <section id="portfolio" className="portfolio-works">
         <Container>
           <h2 className="portfolio-section-title text-center mb-5">Our Works</h2>
@@ -107,7 +116,6 @@ function Portfolio() {
         </Container>
       </section>
 
-      {/* Get in Touch — form left, illustration right */}
       <section className="portfolio-contact" id="contact">
         <Container>
           <Row className="align-items-center g-4">
@@ -155,7 +163,6 @@ function Portfolio() {
         </Container>
       </section>
 
-      {/* Footer */}
       <footer className="portfolio-footer">
         <Container>
           <Row className="align-items-center py-4">

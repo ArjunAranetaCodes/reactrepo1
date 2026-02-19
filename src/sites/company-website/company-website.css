@@ -1,0 +1,1728 @@
+/* Scoped reset: only affect Breno site. Don't use .breno-root * { margin/padding: 0 }
+   or it overrides all descendant rules (higher specificity) and the page goes blank. */
+.breno-root,
+.breno-root * {
+    box-sizing: border-box;
+}
+.breno-root {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #63b54c;
+    --secondary-color: #4e9f3a;
+    --dark-color: #1c1b26;
+    --text-color: #333;
+    --text-light: #666;
+    --bg-color: #ffffff;
+    --bg-light: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.breno-root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.breno-root .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.breno-root .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.breno-root .top-bar {
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.breno-root .top-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    gap: 1rem;
+}
+
+.breno-root .top-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.breno-root .social-links a {
+    color: #fff;
+    margin-left: 0.75rem;
+    transition: opacity 0.2s ease;
+}
+
+.breno-root .social-links a:hover {
+    opacity: 0.8;
+}
+
+.breno-root .info-bar {
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breno-root .info-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.2rem 0;
+}
+
+.breno-root .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.breno-root .brand-mark {
+    background: var(--primary-color);
+    color: #111;
+    padding: 0.4rem 0.6rem;
+    font-size: 1.3rem;
+    border-radius: 4px;
+}
+
+.breno-root .brand-name {
+    font-size: 1.6rem;
+    color: #1a1a1a;
+}
+
+.breno-root .info-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.breno-root .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    background: #fdfdfd;
+    box-shadow: var(--shadow);
+}
+
+.breno-root .info-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f5f7f9;
+    display: grid;
+    place-items: center;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.breno-root .info-title {
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+.breno-root .info-text {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.breno-root .nav-bar {
+    background: var(--dark-color);
+    color: #fff;
+}
+
+.breno-root .nav-bar-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.9rem 0;
+}
+
+.breno-root .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.breno-root .nav-link {
+    text-decoration: none;
+    color: #d9d9e0;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.35rem;
+    transition: color 0.2s ease;
+}
+
+.breno-root .nav-link:hover,
+.breno-root .nav-link.active {
+    color: #fff;
+}
+
+.breno-root .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.breno-root .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.breno-root .search-box {
+    display: flex;
+    align-items: center;
+    background: #2a2837;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #2f2d3c;
+    min-width: 220px;
+}
+
+.breno-root .search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #dcdce7;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.breno-root .search-box i {
+    color: #8f8fa2;
+}
+
+.breno-root .donate-btn {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.75rem 1.6rem;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.breno-root .donate-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.breno-root .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.breno-root .hamburger span {
+    width: 24px;
+    height: 3px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Back to Main Site (below header) */
+.breno-root .header-back-bar {
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 0;
+}
+.breno-root .header-back-inner {
+    padding: 0 20px;
+}
+.breno-root .header-back-link {
+    font-size: 0.875rem;
+    color: #6c757d;
+    text-decoration: none;
+}
+.breno-root .header-back-link:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.breno-root .hero {
+    position: relative;
+    background: #ffffff;
+    color: white;
+    padding-bottom: 140px;
+}
+
+.breno-root .hero-bg {
+    position: relative;
+    min-height: 70vh;
+    background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+
+.breno-root .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0.4) 100%);
+}
+
+.breno-root .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.breno-root .hero-copy {
+    max-width: 520px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.breno-root .hero-kicker {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+}
+
+.breno-root .hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0.6rem 0 1.2rem;
+    line-height: 1.25;
+}
+
+.breno-root .hero-underline {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.8rem;
+}
+
+.breno-root .hero-underline span:first-child {
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.breno-root .hero-underline span:last-child {
+    width: 18px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.breno-root .hero-cta {
+    padding: 12px 30px;
+}
+
+.breno-root .hero-arrows {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.breno-root .arrow-btn {
+    pointer-events: all;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.breno-root .arrow-btn:hover {
+    background: rgba(0,0,0,0.75);
+    transform: translateY(-2px);
+}
+
+.breno-root .hero-cards {
+    position: relative;
+    margin-top: -110px;
+    z-index: 3;
+}
+
+.breno-root .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0;
+}
+
+.breno-root .card-item {
+    background: #fff;
+    padding: 2.4rem 1.8rem;
+    border-radius: 10px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+}
+
+.breno-root .card-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 45px rgba(0,0,0,0.16);
+}
+
+.breno-root .card-featured {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 16px 45px rgba(99,181,76,0.35);
+    position: relative;
+    z-index: 2;
+    margin-top: -20px;
+}
+
+.breno-root .card-white {
+    border-radius: 0;
+}
+
+/* About Section */
+.breno-root .about-section {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.breno-root .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.breno-root .about-image {
+    position: relative;
+}
+
+.breno-root .about-image img {
+    width: 100%;
+    display: block;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+
+.breno-root .watch-btn {
+    position: absolute;
+    left: 50%;
+    bottom: -32px;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #6ac155, #5aa747);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border: 6px solid #cfe9c5;
+    border-radius: 80px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    box-shadow: 0 15px 35px rgba(90,167,71,0.35);
+}
+
+.breno-root .watch-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #e4f3dd;
+    display: grid;
+    place-items: center;
+    color: #4e9f3a;
+    font-size: 1.1rem;
+    box-shadow: inset 0 0 0 6px #cfe9c5;
+}
+
+.breno-root .watch-text {
+    line-height: 1.3;
+    text-align: left;
+}
+
+.breno-root .about-copy .eyebrow {
+    color: #4e9f3a;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.breno-root .about-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1f1f1f;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.breno-root .about-divider {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.4rem;
+}
+
+.breno-root .about-divider span:first-child {
+    width: 36px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.breno-root .about-divider span:last-child {
+    width: 16px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.breno-root .about-desc {
+    color: #4a4a55;
+    line-height: 1.8;
+    margin-bottom: 1.4rem;
+}
+
+.breno-root .about-list {
+    list-style: none;
+    display: grid;
+    gap: 0.9rem;
+    padding: 0;
+}
+
+.breno-root .about-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.breno-root .about-list i {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+/* Stats Section */
+.breno-root .stats {
+    position: relative;
+    padding: 70px 0;
+    background: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    color: #fff;
+    overflow: hidden;
+}
+
+.breno-root .stats-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 6, 6, 0.82);
+}
+
+.breno-root .stats-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.breno-root .stat-item {
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+
+.breno-root .stat-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+    color: #fff;
+}
+
+.breno-root .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.breno-root .stat-label {
+    color: #e6e6ea;
+    font-weight: 600;
+}
+
+.breno-root .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 768px) {
+    .breno-root .stat-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* Causes Section */
+.breno-root .causes {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.breno-root .section-head {
+    text-align: left;
+    margin-bottom: 2.5rem;
+}
+
+.breno-root .section-underline {
+    display: flex;
+    gap: 6px;
+    margin-top: 0.5rem;
+}
+
+.breno-root .section-underline span:first-child {
+    width: 36px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.breno-root .section-underline span:last-child {
+    width: 16px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.breno-root .causes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.breno-root .cause-card {
+    background: #fff;
+    border: 1px solid #e9e9ef;
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.breno-root .cause-thumb img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+}
+
+.breno-root .cause-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1f1f1f;
+    line-height: 1.3;
+}
+
+.breno-root .cause-text {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.98rem;
+}
+
+.breno-root .cause-progress {
+    background: #e6e6e6;
+    border-radius: 999px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.breno-root .cause-bar {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 999px;
+}
+
+.breno-root .cause-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-weight: 700;
+}
+
+.breno-root .cause-raised {
+    color: #111;
+}
+
+.breno-root .cause-goal {
+    color: #666;
+    font-weight: 600;
+}
+
+.breno-root .cause-btn {
+    width: fit-content;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.breno-root .cause-featured {
+    background: linear-gradient(135deg, #6ac155, #58aa45);
+    color: #fff;
+    border: none;
+    box-shadow: 0 16px 40px rgba(88,170,69,0.35);
+}
+
+.breno-root .cause-featured .cause-text,
+.breno-root .cause-featured .cause-goal,
+.breno-root .cause-featured .cause-raised {
+    color: #f3f8ee;
+}
+
+.breno-root .cause-featured .cause-progress {
+    background: rgba(255,255,255,0.45);
+}
+
+.breno-root .cause-featured .cause-bar {
+    background: #1f1f1f;
+}
+
+.breno-root .dark-btn {
+    background: #111;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .breno-root .section-head {
+        text-align: center;
+    }
+    .breno-root .section-underline {
+        justify-content: center;
+    }
+    .breno-root .cause-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Offer Section */
+.breno-root .offer {
+    padding: 90px 0;
+    background: #f7f8f9;
+}
+
+.breno-root .offer-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+}
+
+.breno-root .offer-subtext {
+    color: #666;
+    margin-top: 1rem;
+    line-height: 1.8;
+}
+
+.breno-root .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.breno-root .offer-card {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.3rem 1.2rem;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: center;
+    overflow: hidden;
+}
+
+.breno-root .corner-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #6ac155, #58aa45);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.breno-root .offer-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: #f3f8ef;
+    display: grid;
+    place-items: center;
+    color: #56a241;
+    font-size: 1.4rem;
+    z-index: 1;
+}
+
+.breno-root .offer-body h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    color: #1f1f1f;
+}
+
+.breno-root .offer-body p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.96rem;
+}
+
+@media (max-width: 768px) {
+    .breno-root .offer-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .breno-root .offer-icon {
+        margin-bottom: 0.4rem;
+    }
+}
+
+/* Events Section */
+.breno-root .events {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.breno-root .events-head {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.breno-root .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+}
+
+.breno-root .event-card {
+    background: #fff;
+    border: 1px solid #e8e8ef;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.breno-root .event-thumb img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.breno-root .event-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    background: #63b54c;
+}
+
+.breno-root .event-date,
+.breno-root .event-time {
+    background: transparent;
+    color: #fff;
+    padding: 0;
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: none;
+}
+
+.breno-root .event-time i {
+    margin-right: 6px;
+    color: #fff;
+}
+
+.breno-root .event-title {
+    padding: 0 1rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1f1f1f;
+    margin: 10px 0 0.6rem;
+    line-height: 1.3;
+}
+
+.breno-root .event-link {
+    padding: 0 1rem 1rem;
+    color: #58aa45;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.breno-root .event-link i {
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .breno-root .event-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+}
+
+/* Testimonials */
+.breno-root .testimonials {
+    position: relative;
+    padding: 110px 0;
+    background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    color: #fff;
+    overflow: hidden;
+}
+
+.breno-root .testimonials-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.45) 100%);
+}
+
+.breno-root .testimonials-content {
+    position: relative;
+    z-index: 1;
+    max-width: 540px;
+}
+
+.breno-root .testimonial-left .section-title {
+    color: #fff;
+}
+
+.breno-root .testimonial-left .section-underline span {
+    background: #6ac155;
+}
+
+.breno-root .testimonials .eyebrow {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #fff;
+    margin-bottom: 0.4rem;
+    display: inline-block;
+}
+
+.breno-root .testimonial-card {
+    margin-top: 1.5rem;
+    background: #fff;
+    color: #1f1f1f;
+    border-radius: 14px;
+    padding: 1.4rem;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+    max-width: 520px;
+}
+
+.breno-root .testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.breno-root .testimonial-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #6ac155;
+}
+
+.breno-root .testimonial-name {
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+.breno-root .testimonial-role {
+    color: #666;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.breno-root .testimonial-text {
+    line-height: 1.7;
+    color: #333;
+    margin: 0 0 1.2rem;
+}
+
+.breno-root .testimonial-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.breno-root .testimonial-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d6d6d6;
+}
+
+.breno-root .testimonial-dots .dot.active {
+    background: #6ac155;
+}
+
+@media (max-width: 768px) {
+    .breno-root .testimonials {
+        padding: 80px 0;
+    }
+}
+
+/* News */
+.breno-root .news {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.breno-root .news-head {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.breno-root .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+}
+
+.breno-root .news-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.breno-root .news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 38px rgba(0,0,0,0.1);
+}
+
+.breno-root .news-thumb {
+    position: relative;
+}
+
+.breno-root .news-thumb img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.breno-root .news-date {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #63b54c;
+    color: #fff;
+    padding: 12px 14px;
+    line-height: 1.25;
+    font-weight: 800;
+    text-align: center;
+    font-size: 0.9rem;
+    border-radius: 0 12px 12px 12px;
+}
+
+.breno-root .news-body {
+    padding: 1rem 1.1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.breno-root .news-body h3 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    color: #1f1f1f;
+    margin: 0;
+    font-weight: 800;
+}
+
+.breno-root .news-link {
+    color: #63b54c;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.breno-root .news-link i {
+    font-size: 0.85rem;
+}
+
+.breno-root .news-dots {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.breno-root .news-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d6d6d6;
+}
+
+.breno-root .news-dots .dot.active {
+    background: #63b54c;
+}
+
+.breno-root .card-featured p {
+    color: #eaf6e5;
+}
+
+.breno-root .card-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.breno-root .card-featured .card-icon {
+    color: #0e2106;
+}
+
+.breno-root .card-item h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.breno-root .card-item p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 0.98rem;
+}
+
+.breno-root .btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.breno-root .btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.breno-root .btn-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.breno-root .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.breno-root .btn-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Services Section */
+.breno-root .services {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.breno-root .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.breno-root .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.breno-root .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.breno-root .service-card {
+    background: var(--bg-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.breno-root .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.breno-root .service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.breno-root .service-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.breno-root .service-description {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* About Section */
+.breno-root .about {
+    padding: 80px 0;
+    background: var(--bg-color);
+}
+
+.breno-root .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.breno-root .about-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* Contact Section */
+.breno-root .contact {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.breno-root .contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.breno-root .contact-form {
+    background: var(--bg-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.breno-root .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.breno-root .form-group input,
+.breno-root .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.breno-root .form-group input:focus,
+.breno-root .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.breno-root .form-group textarea {
+    resize: vertical;
+}
+
+/* Footer */
+.breno-root .site-footer {
+    background: #212529;
+    color: #fff;
+    padding: 60px 0 0;
+}
+
+.breno-root .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.breno-root .footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.breno-root .footer-about .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.breno-root .footer-about .brand-mark {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 4px;
+}
+
+.breno-root .footer-about .brand-name {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.breno-root .footer-desc {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.breno-root .footer-social {
+    display: flex;
+    gap: 10px;
+}
+
+.breno-root .footer-social a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.breno-root .footer-social a:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.breno-root .footer-heading {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.breno-root .footer-underline {
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.breno-root .footer-links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.breno-root .footer-links {
+    list-style: none;
+}
+
+.breno-root .footer-links li {
+    margin-bottom: 10px;
+}
+
+.breno-root .footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.breno-root .footer-links a i {
+    color: var(--primary-color);
+    font-size: 0.7rem;
+}
+
+.breno-root .footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.breno-root .footer-blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.breno-root .footer-blog-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.breno-root .footer-blog-title {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    line-height: 1.4;
+}
+
+.breno-root .footer-blog-title:hover {
+    color: var(--primary-color);
+}
+
+.breno-root .footer-blog-date {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.breno-root .footer-touch-text {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.breno-root .footer-newsletter {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.breno-root .footer-newsletter input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.breno-root .footer-newsletter input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.breno-root .footer-newsletter input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.breno-root .footer-go-btn {
+    padding: 12px 25px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.breno-root .footer-go-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.breno-root .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.breno-root .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breno-root .footer-copyright {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.breno-root .footer-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breno-root .footer-link:hover {
+    text-decoration: underline;
+}
+
+.breno-root .scroll-top {
+    width: 40px;
+    height: 40px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.breno-root .scroll-top:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .breno-root .info-bar-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .breno-root .top-bar-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .breno-root .nav-bar-content {
+        grid-template-columns: auto auto;
+        grid-template-areas:
+            "hamburger actions"
+            "menu menu";
+        row-gap: 1rem;
+    }
+
+    .breno-root .hamburger {
+        display: flex;
+        grid-area: hamburger;
+    }
+
+    .breno-root .nav-actions {
+        grid-area: actions;
+        justify-content: flex-end;
+    }
+
+    .breno-root .nav-menu {
+        grid-area: menu;
+        position: fixed;
+        left: -100%;
+        top: 0;
+        flex-direction: column;
+        background: var(--dark-color);
+        width: 75%;
+        height: 100vh;
+        padding: 5rem 1.5rem 2rem;
+        gap: 1rem;
+        transition: 0.3s;
+        box-shadow: var(--shadow-hover);
+        z-index: 1001;
+    }
+
+    .breno-root .nav-menu.active {
+        left: 0;
+    }
+
+    .breno-root .hero-inner {
+        min-height: 60vh;
+    }
+
+    .breno-root .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .breno-root .hero-kicker {
+        font-size: 1.6rem;
+    }
+
+    .breno-root .hero-arrows {
+        display: none;
+    }
+
+    .breno-root .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .breno-root .section-title {
+        font-size: 2rem;
+    }
+
+    .breno-root .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .breno-root .about-copy {
+        text-align: center;
+    }
+
+    .breno-root .about-divider {
+        justify-content: center;
+    }
+
+    .breno-root .about-list {
+        justify-items: center;
+    }
+
+    .breno-root .about-list li {
+        justify-content: center;
+    }
+
+    .breno-root .watch-btn {
+        position: static;
+        transform: none;
+        margin: 14px auto 0;
+    }
+
+    .breno-root .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .breno-root .footer-bottom-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .breno-root .hero {
+        padding-bottom: 100px;
+    }
+
+    .breno-root .hero-bg {
+        min-height: 60vh;
+    }
+
+    .breno-root .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .breno-root .hero-kicker {
+        font-size: 1.3rem;
+    }
+
+    .breno-root .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .breno-root .hero-cards {
+        margin-top: -80px;
+    }
+
+    .breno-root .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .breno-root .footer-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .breno-root .footer-bottom-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .breno-root .footer-newsletter {
+        flex-direction: column;
+    }
+
+    .breno-root .footer-go-btn {
+        width: 100%;
+    }
+}
+

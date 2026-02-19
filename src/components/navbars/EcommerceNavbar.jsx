@@ -18,10 +18,11 @@ import {
   faBars
 } from '@fortawesome/free-solid-svg-icons';
 import './EcommerceNavbar.css';
+import { shopSlugs } from '../../sites/shops';
 
-const initNavItems = [
+const getNavItems = (shopBasePath) => [
   { id: 1, label: 'Home', path: '/' },
-  { id: 2, label: 'Shop', path: '/shop' },
+  { id: 2, label: 'Shop', path: shopBasePath },
   { id: 3, label: 'Products', section: 'products' },
   { id: 4, label: 'Categories', section: 'categories' },
   { id: 5, label: 'About', section: 'about' },
@@ -62,6 +63,10 @@ const categories = [
 const EcommerceNavbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const pathSeg = location.pathname.split('/')[1];
+  const shopBasePath = shopSlugs.includes(pathSeg) ? `/${pathSeg}` : '/shop1';
+  const initNavItems = getNavItems(shopBasePath);
+  const isShopPage = shopSlugs.some((s) => location.pathname.startsWith(`/${s}`));
   const containerRef = useRef(null);
   const otherElsRef = useRef(null);
   const moreBtnRef = useRef(null);
@@ -76,11 +81,11 @@ const EcommerceNavbar = () => {
     }
     if (item.section) {
       e.preventDefault();
-      if (location.pathname.startsWith('/shop')) {
+      if (isShopPage) {
         const el = document.getElementById(item.section);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       } else {
-        navigate('/shop');
+        navigate(shopBasePath);
       }
     }
   };

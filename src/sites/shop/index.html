@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Shop – Online Store</title>
+  <link rel="stylesheet" href="css/shop.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <!-- Top bar -->
+    <div class="header-top" style="background-color: #afdb4a;">
+      <div class="header-top-inner">
+        <div class="header-top-left">
+          <span class="header-icon"><img src="../assets/images/NF-header-phone.png" alt="" width="24" height="24"></span>
+          <a href="tel:123456789">123456789</a>
+          <span class="header-icon" style="margin-left: 2rem;"><img src="../assets/images/NF-header-email.png" alt="" width="24" height="24"></span>
+          <a href="mailto:hello@reactshop.example">hello@reactshop.example</a>
+        </div>
+        <div class="header-top-right">
+          <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+          <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+          <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <!-- Main nav -->
+    <div class="header-main">
+      <div class="header-main-inner">
+        <a href="index.html" class="logo">React Shop</a>
+        <nav class="nav-main">
+          <a href="index.html">Home</a>
+          <a href="#products">Shop</a>
+          <a href="#products">Products</a>
+          <a href="#welcome">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#cart" class="btn btn-cart">Cart</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero banner -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image: url('../assets/images/header-banner.jpg');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-label">New Collection</p>
+        <h1 class="hero-title">Shop the Latest<br>Trends Online</h1>
+        <p class="hero-text">Free shipping on orders over $50. Discover quality products at great prices.</p>
+        <a href="#products" class="btn btn-primary">Shop Now</a>
+      </div>
+    </section>
+
+    <!-- Product categories -->
+    <section class="section section-categories" id="categories">
+      <div class="section-inner">
+        <div class="categories-grid">
+          <div class="categories-cards">
+            <a href="#" class="category-card">
+              <img src="../assets/images/nutriflux_service_icon1.jpg" alt="Electronics">
+              <h3>Electronics</h3>
+            </a>
+            <a href="#" class="category-card">
+              <img src="../assets/images/nutriflux_service_icon2.jpg" alt="Fashion">
+              <h3>Fashion</h3>
+            </a>
+            <a href="#" class="category-card">
+              <img src="../assets/images/nutriflux_service_icon3.jpg" alt="Home & Living">
+              <h3>Home & Living</h3>
+            </a>
+            <a href="#" class="category-card">
+              <img src="../assets/images/nutriflux_service_icon4.jpg" alt="Sports">
+              <h3>Sports</h3>
+            </a>
+            <a href="#" class="category-card">
+              <img src="../assets/images/nutriflux_service_icon5.jpg" alt="Beauty">
+              <h3>Beauty</h3>
+            </a>
+            <a href="#" class="category-card">
+              <img src="../assets/images/nutriflux_service_icon6.jpg" alt="Accessories">
+              <h3>Accessories</h3>
+            </a>
+          </div>
+          <div class="categories-sidebar">
+            <p class="section-label">Shop Categories</p>
+            <h2 class="section-title">We Have Everything You Need</h2>
+            <p class="section-desc">Browse our curated selection of quality products. Fast delivery and easy returns.</p>
+            <img src="../assets/images/nutriflux_service_right_image.jpg" alt="Shop" class="sidebar-image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product list – Cleaning chemicals -->
+    <section class="section section-products" id="products">
+      <div class="section-inner">
+        <p class="section-label">Cleaning Chemicals</p>
+        <h2 class="section-title section-title-center">Our Products</h2>
+        <p class="section-desc section-desc-center">Professional-grade cleaning supplies for home and workplace.</p>
+        <ul class="product-list">
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">All-Purpose</div>
+            <div class="product-info">
+              <h3 class="product-name">All-Purpose Cleaner</h3>
+              <p class="product-desc">Removes dirt and grime from most surfaces. Safe for countertops, appliances, and more.</p>
+              <p class="product-price">$8.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Glass</div>
+            <div class="product-info">
+              <h3 class="product-name">Glass &amp; Window Cleaner</h3>
+              <p class="product-desc">Streak-free shine for windows, mirrors, and glass surfaces. Ammonia-free formula.</p>
+              <p class="product-price">$5.49</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Floor</div>
+            <div class="product-info">
+              <h3 class="product-name">Floor Cleaner Concentrate</h3>
+              <p class="product-desc">For tile, laminate, and hardwood. Dilutes for multiple uses. Fresh scent.</p>
+              <p class="product-price">$12.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Disinfect</div>
+            <div class="product-info">
+              <h3 class="product-name">Disinfectant Spray</h3>
+              <p class="product-desc">Kills 99.9% of germs. Use on hard, non-porous surfaces. EPA registered.</p>
+              <p class="product-price">$9.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Bleach</div>
+            <div class="product-info">
+              <h3 class="product-name">Bleach (1 Gallon)</h3>
+              <p class="product-desc">Multipurpose disinfecting bleach. Whitens laundry and sanitizes surfaces.</p>
+              <p class="product-price">$4.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Dish</div>
+            <div class="product-info">
+              <h3 class="product-name">Dish Soap</h3>
+              <p class="product-desc">Cuts through grease and food residue. Gentle on hands. 24 oz bottle.</p>
+              <p class="product-price">$3.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Laundry</div>
+            <div class="product-info">
+              <h3 class="product-name">Laundry Detergent</h3>
+              <p class="product-desc">For standard and HE washers. 100 loads. Fresh scent, stain-fighting power.</p>
+              <p class="product-price">$14.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Bathroom</div>
+            <div class="product-info">
+              <h3 class="product-name">Bathroom Cleaner</h3>
+              <p class="product-desc">Removes soap scum, lime scale, and mildew. Spray and wipe formula.</p>
+              <p class="product-price">$6.49</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Degreaser</div>
+            <div class="product-info">
+              <h3 class="product-name">Heavy-Duty Degreaser</h3>
+              <p class="product-desc">For kitchens, garages, and industrial use. Cuts through oil and grease.</p>
+              <p class="product-price">$11.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Carpet</div>
+            <div class="product-info">
+              <h3 class="product-name">Carpet &amp; Upholstery Cleaner</h3>
+              <p class="product-desc">Professional-grade formula. Safe for most fabrics and carpets.</p>
+              <p class="product-price">$15.99</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Wipes</div>
+            <div class="product-info">
+              <h3 class="product-name">Multi-Surface Wipes</h3>
+              <p class="product-desc">Convenient disposable wipes. Disinfects and cleans in one step. 80 count.</p>
+              <p class="product-price">$7.49</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+          <li class="product-card">
+            <div class="product-image" aria-hidden="true">Drain</div>
+            <div class="product-info">
+              <h3 class="product-name">Drain Cleaner</h3>
+              <p class="product-desc">Unclogs sinks, tubs, and showers. Safe for pipes. Fast-acting formula.</p>
+              <p class="product-price">$8.49</p>
+              <a href="#" class="btn btn-add">Add to Cart</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Welcome / features -->
+    <section class="section section-welcome" id="welcome">
+      <div class="section-inner">
+        <div class="welcome-grid">
+          <div class="welcome-content">
+            <p class="section-label">Welcome to React Shop</p>
+            <h2 class="section-title">Your Shopping Journey Starts Here</h2>
+            <p class="section-desc">We bring you the best products with trusted service. Shop with confidence.</p>
+            <ul class="feature-list">
+              <li><img src="../assets/images/NF-tick-icon.png" alt=""> Free Shipping</li>
+              <li><img src="../assets/images/NF-tick-icon.png" alt=""> Easy Returns</li>
+              <li><img src="../assets/images/NF-tick-icon.png" alt=""> Secure Payment</li>
+            </ul>
+            <a href="#products" class="btn btn-primary">Shop Now</a>
+          </div>
+          <div class="welcome-images">
+            <img src="../assets/images/nutriflux_welcome_large.jpg" alt="Shopping" class="welcome-img-large">
+            <div class="welcome-img-block">
+              <img src="../assets/images/nutriflux_welcome_small.jpg" alt="">
+              <div class="callout-box">
+                <img src="../assets/images/telephone-image.jpg" alt="">
+                <p>Call Us For Free</p>
+                <a href="tel:6482045036">648.204.5036</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h3>Main Menu</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#welcome">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Size Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p><img src="../assets/images/NF-footer-phone.png" alt=""> <a href="tel:01232445698">012 324 45698</a></p>
+          <p><img src="../assets/images/NF-footer-email.png" alt=""> <a href="mailto:hello@reactshop.example">hello@reactshop.example</a></p>
+          <p><img src="../assets/images/NF-footer-map.png" alt=""> 380 St Kilda Road, Jackso Store, Australia</p>
+        </div>
+        <div class="footer-col">
+          <h3>About Us</h3>
+          <p>Quality products, great prices, and customer-first service. Shop with confidence at React Shop.</p>
+          <div class="footer-social">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>React Shop</p>
+        <p>HTML &amp; CSS Shop Template</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

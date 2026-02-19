@@ -1,27 +1,34 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import ProductCards from '../components/ProductCards';
 import Cart from '../components/Cart';
 import Checkout from '../components/Checkout';
 import { Container } from 'react-bootstrap';
+import { getShopConfig, shopSlugs } from '../sites/shops';
 
 function Shop() {
+  const { siteId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const view = location.pathname === '/shop/checkout' ? 'checkout' : location.pathname === '/shop/cart' ? 'cart' : 'home';
+  const slug = shopSlugs.includes(siteId) ? siteId : 'shop1';
+  const config = getShopConfig(slug);
+
+  const isCart = location.pathname === `/${slug}/cart`;
+  const isCheckout = location.pathname === `/${slug}/checkout`;
+  const view = isCheckout ? 'checkout' : isCart ? 'cart' : 'home';
 
   return (
     <>
       <div className="container py-2">
         <Link to="/" className="text-decoration-none small text-muted">
-          ← Back to portfolio
+          ← Back to Main Site
         </Link>
       </div>
 
       {view === 'home' && (
         <>
           <Hero />
-          <ProductCards />
+          <ProductCards siteId={slug} />
 
           <section id="categories" style={{ padding: '4rem 0' }}>
             <Container className="text-center">
@@ -34,7 +41,7 @@ function Shop() {
             <Container className="text-center">
               <h2>About</h2>
               <p className="text-muted">
-                This is a headless WooCommerce storefront built with React.
+                {config?.name ?? 'Shop'} — headless storefront built with React.
               </p>
             </Container>
           </section>
@@ -49,11 +56,11 @@ function Shop() {
       )}
 
       {view === 'cart' && (
-        <Cart onProceedToCheckout={() => navigate('/shop/checkout')} />
+        <Cart onProceedToCheckout={() => navigate(`/${slug}/checkout`)} />
       )}
 
       {view === 'checkout' && (
-        <Checkout onBackToCart={() => navigate('/shop/cart')} />
+        <Checkout onBackToCart={() => navigate(`/${slug}/cart`)} />
       )}
     </>
   );

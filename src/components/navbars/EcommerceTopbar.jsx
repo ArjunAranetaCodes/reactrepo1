@@ -1,18 +1,22 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Col, Nav, Navbar, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import Logo from '../common/Logo';
 import SearchBox from '../common/SearchBox';
 import './EcommerceNavbar.css';
 import { useCart } from '../common/CartContext';
+import { shopSlugs } from '../../sites/shops';
 
 const EcommerceTopbar = () => {
   const { itemCount } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathSeg = location.pathname.split('/')[1];
+  const currentShop = shopSlugs.includes(pathSeg) ? pathSeg : 'shop1';
 
   const handleCartClick = (e) => {
     e.preventDefault();
-    navigate('/shop/cart');
+    navigate(`/${currentShop}/cart`);
   };
 
   return (

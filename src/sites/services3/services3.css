@@ -1,0 +1,467 @@
+/* Services3 – CloudSync SaaS landing. Different company, different variation. Scoped under .services3-root */
+.services3-root {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #fff;
+  color: #1e293b;
+  --s3-primary: #6366f1;
+  --s3-primary-dark: #4f46e5;
+  --s3-accent: #8b5cf6;
+  --s3-text: #64748b;
+  --s3-border: #e2e8f0;
+}
+
+.services3-root *,
+.services3-root *::before,
+.services3-root *::after {
+  box-sizing: inherit;
+}
+
+.services3-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Nav */
+.services3-root .services3-nav {
+  background: #fff;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--s3-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.services3-root .services3-nav .services3-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.services3-root .services3-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--s3-primary);
+  text-decoration: none;
+}
+
+.services3-root .services3-logo:hover {
+  color: var(--s3-primary-dark);
+}
+
+.services3-root .services3-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.services3-root .services3-nav-links a {
+  color: var(--s3-text);
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.services3-root .services3-nav-links a:hover {
+  color: var(--s3-primary);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.services3-root .services3-nav-cta {
+  background: var(--s3-primary) !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.services3-root .services3-nav-cta:hover {
+  background: var(--s3-primary-dark) !important;
+  color: #fff !important;
+}
+
+/* Back bar */
+.services3-root .services3-back-bar {
+  background: #f8fafc;
+  padding: 8px 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--s3-border);
+}
+
+.services3-root .services3-back-link {
+  color: var(--s3-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.services3-root .services3-back-link:hover {
+  color: var(--s3-primary);
+}
+
+/* Hero – single CTA, no gradient overlay */
+.services3-root .services3-hero {
+  padding: 5rem 0 6rem;
+  text-align: center;
+  background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+}
+
+.services3-root .services3-hero-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--s3-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.services3-root .services3-hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  color: #0f172a;
+}
+
+.services3-root .services3-hero-sub {
+  font-size: 1.2rem;
+  color: var(--s3-text);
+  max-width: 560px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.services3-root .services3-hero-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.services3-root .services3-hero-input {
+  flex: 1;
+  min-width: 200px;
+  height: 52px;
+  padding: 0 20px;
+  border: 2px solid var(--s3-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.services3-root .services3-hero-input:focus {
+  outline: none;
+  border-color: var(--s3-primary);
+}
+
+.services3-root .services3-hero-btn {
+  height: 52px;
+  padding: 0 28px;
+  background: var(--s3-primary);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.services3-root .services3-hero-btn:hover {
+  background: var(--s3-primary-dark);
+  color: #fff;
+}
+
+.services3-root .services3-hero-success {
+  color: var(--s3-primary);
+  font-weight: 500;
+}
+
+/* Features – grid, not tabs */
+.services3-root .services3-features {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.services3-root .services3-section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #0f172a;
+  text-align: center;
+}
+
+.services3-root .services3-section-sub {
+  text-align: center;
+  color: var(--s3-text);
+  font-size: 1.1rem;
+  margin: 0 0 3rem;
+}
+
+.services3-root .services3-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.services3-root .services3-feature-card {
+  padding: 2rem;
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid var(--s3-border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.services3-root .services3-feature-card:hover {
+  border-color: var(--s3-primary);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+}
+
+.services3-root .services3-feature-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.services3-root .services3-feature-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.services3-root .services3-feature-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--s3-text);
+  line-height: 1.6;
+}
+
+/* Stats strip */
+.services3-root .services3-stats {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--s3-primary) 0%, var(--s3-accent) 100%);
+  color: #fff;
+}
+
+.services3-root .services3-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .services3-root .services3-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services3-root .services3-stat-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.services3-root .services3-stat-label {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Testimonial – single quote block */
+.services3-root .services3-testimonial {
+  padding: 5rem 0;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.services3-root .services3-quote {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #334155;
+  margin: 0 0 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+  border: none;
+  padding: 0;
+}
+
+.services3-root .services3-quote-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.services3-root .services3-quote-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.services3-root .services3-quote-author strong {
+  display: block;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.services3-root .services3-quote-author span {
+  font-size: 0.9rem;
+  color: var(--s3-text);
+}
+
+/* CTA section */
+.services3-root .services3-cta {
+  padding: 4rem 0;
+  background: #fff;
+  text-align: center;
+}
+
+.services3-root .services3-cta h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #0f172a;
+}
+
+.services3-root .services3-cta p {
+  margin: 0 0 1.5rem;
+  color: var(--s3-text);
+  font-size: 1.1rem;
+}
+
+.services3-root .services3-btn {
+  display: inline-block;
+  background: var(--s3-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.services3-root .services3-btn:hover {
+  background: var(--s3-primary-dark);
+  color: #fff;
+}
+
+.services3-root .services3-btn-lg {
+  padding: 16px 32px;
+  font-size: 1.1rem;
+}
+
+/* Contact */
+.services3-root .services3-contact {
+  padding: 5rem 0;
+  background: #f8fafc;
+}
+
+.services3-root .services3-contact .services3-section-title {
+  margin-bottom: 1.5rem;
+}
+
+.services3-root .services3-contact-form {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.services3-root .services3-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 500px) {
+  .services3-root .services3-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services3-root .services3-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--s3-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.services3-root .services3-input:focus {
+  outline: none;
+  border-color: var(--s3-primary);
+}
+
+.services3-root .services3-textarea {
+  resize: vertical;
+  min-height: 120px;
+  margin-bottom: 16px;
+}
+
+.services3-root .services3-contact-success {
+  color: var(--s3-primary);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Footer */
+.services3-root .services3-footer {
+  padding: 2.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--s3-border);
+}
+
+.services3-root .services3-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.services3-root .services3-footer-brand .services3-logo {
+  font-size: 1.25rem;
+}
+
+.services3-root .services3-footer-brand p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: var(--s3-text);
+}
+
+.services3-root .services3-footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.services3-root .services3-footer-links a {
+  color: var(--s3-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.services3-root .services3-footer-links a:hover {
+  color: var(--s3-primary);
+}

@@ -1,41 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Spinner, Alert, Badge } from 'react-bootstrap';
 import { useCart } from './common/CartContext';
+import { getShopConfig } from '../sites/shops';
 import './ProductCards.css';
 
-function ProductCards() {
+function ProductCards({ siteId = 'shop1' }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { addToCart } = useCart();
 
-  // Headless endpoint disabled – using dummy cleaning products
-  const USE_DUMMY_PRODUCTS = true;
-
-  // Product images from public/shop1/
-  const DUMMY_PRODUCTS = [
-    { id: 1, name: 'All-Purpose Cleaner', price: '4.99', regular_price: '4.99', sale_price: '', on_sale: false, featured: true, stock_status: 'instock', permalink: '#', short_description: 'Tough on grease and grime, safe on surfaces. Lemon scent.', description: '', images: [{ src: '/shop1/all-purpose.jpg' }] },
-    { id: 2, name: 'Bathroom Cleaner', price: '6.29', regular_price: '6.29', sale_price: '', on_sale: false, featured: true, stock_status: 'instock', permalink: '#', short_description: 'Removes soap scum and hard water stains.', description: '', images: [{ src: '/shop1/Bathroom%20Cleaner.jpg' }] },
-    { id: 3, name: 'Bleach (1 Gallon)', price: '5.99', regular_price: '5.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Household bleach. 1 gallon bottle.', description: '', images: [{ src: '/shop1/Bleach%281%20Gallon%29.jpg' }] },
-    { id: 4, name: 'Carpet & Upholstery Cleaner', price: '6.99', regular_price: '6.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Cleans and refreshes carpets and upholstery.', description: '', images: [{ src: '/shop1/Carpet-Upholstery%20Cleaner.jpg' }] },
-    { id: 5, name: 'Dish Soap', price: '3.49', regular_price: '3.49', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Gentle on hands, cuts through grease. 24 oz.', description: '', images: [{ src: '/shop1/Dish%20Soap.jpg' }] },
-    { id: 6, name: 'Disinfectant Spray', price: '7.99', regular_price: '7.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Kills 99.9% of germs. Spray formula.', description: '', images: [{ src: '/shop1/Disinfectant-Spray.jpg' }] },
-    { id: 7, name: 'Drain Cleaner', price: '4.49', regular_price: '4.49', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Unclogs sinks and tubs. Safe for pipes.', description: '', images: [{ src: '/shop1/Drain%20Cleaner.jpg' }] },
-    { id: 8, name: 'Floor Cleaner Concentrate', price: '8.99', regular_price: '8.99', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'One bottle makes 20+ gallons. Works on tile and laminate.', description: '', images: [{ src: '/shop1/floor-cleaner-concentrate.jpg' }] },
-    { id: 9, name: 'Glass & Window Cleaner', price: '5.49', regular_price: '6.99', sale_price: '5.49', on_sale: true, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Streak-free shine for windows and mirrors.', description: '', images: [{ src: '/shop1/glass-window-cleaner.jpg' }] },
-    { id: 10, name: 'Heavy-Duty Degreaser', price: '7.49', regular_price: '7.49', sale_price: '', on_sale: false, featured: false, stock_status: 'instock', permalink: '#', short_description: 'Heavy-duty formula for baked-on grease and grime.', description: '', images: [{ src: '/shop1/Heavy-Duty%20Degreaser.jpg' }] },
-    { id: 11, name: 'Multi-Surface Wipes', price: '7.99', regular_price: '7.99', sale_price: '', on_sale: false, featured: true, stock_status: 'instock', permalink: '#', short_description: 'Convenient wipes for kitchen, bathroom, and more.', description: '', images: [{ src: '/shop1/Multi-Surface%20Wipes.jpg' }] },
-  ];
-
   useEffect(() => {
-    if (USE_DUMMY_PRODUCTS) {
-      setProducts(DUMMY_PRODUCTS);
-      setError(null);
-      setLoading(false);
-    } else {
-      fetchProducts();
-    }
-  }, []);
+    const config = getShopConfig(siteId);
+    const list = config?.products ?? [];
+    setProducts(list);
+    setError(null);
+    setLoading(false);
+  }, [siteId]);
 
   const fetchProducts = async () => {
     try {
@@ -136,7 +117,7 @@ function ProductCards() {
             </ol>
           </p>
           <hr />
-          <Button variant="outline-danger" onClick={() => { if (USE_DUMMY_PRODUCTS) { setProducts(DUMMY_PRODUCTS); setError(null); } else fetchProducts(); }}>
+          <Button variant="outline-danger" onClick={() => { setProducts(getShopConfig(siteId)?.products ?? []); setError(null); setLoading(false); }}>
             Retry
           </Button>
         </Alert>
@@ -150,7 +131,7 @@ function ProductCards() {
         <div className="text-center">
           <h2>No products found</h2>
           <p>There are no products available at the moment.</p>
-          <Button variant="primary" onClick={() => (USE_DUMMY_PRODUCTS ? setProducts(DUMMY_PRODUCTS) : fetchProducts())} className="mt-3">
+          <Button variant="primary" onClick={() => { setProducts(getShopConfig(siteId)?.products ?? []); setLoading(false); }} className="mt-3">
             Refresh
           </Button>
         </div>

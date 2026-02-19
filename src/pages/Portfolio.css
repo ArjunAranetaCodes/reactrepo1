@@ -1,0 +1,294 @@
+/* Palette: dusty blue, goldenrod, terracotta, muted coral — warm earthy */
+:root {
+  --portfolio-primary: #6b7c9a;       /* dusty/slate blue */
+  --portfolio-primary-light: #8a98b0;
+  --portfolio-card-blue: #6b7c9a;     /* cards & banner */
+  --portfolio-goldenrod: #c9a227;      /* warm yellow — CTAs */
+  --portfolio-terracotta: #c4845c;     /* soft orange/peach */
+  --portfolio-coral: #c9958a;          /* muted reddish-pink */
+  --portfolio-bg: #faf6f2;
+  --portfolio-card: #ebe5df;
+  --portfolio-footer: #ebe5df;
+}
+
+.portfolio-page {
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* Hero — full-width banner */
+.portfolio-hero {
+  width: 100%;
+  padding: 0;
+}
+
+.portfolio-hero-banner {
+  width: 100%;
+  min-height: 42vh;
+  padding: 4rem 0;
+  background: var(--portfolio-card-blue) url(/shop-banner.jpg) center center no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.portfolio-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 104, 104, 0.6);
+  pointer-events: none;
+}
+
+.portfolio-hero-banner .portfolio-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-hero-content {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.portfolio-hero-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-hero-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-hero-btn {
+  background: #000 !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.portfolio-hero-btn:hover {
+  background: #333 !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.portfolio-hero-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.portfolio-hero .portfolio-social-icon {
+  color: #fff;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.portfolio-hero .portfolio-social-icon:hover {
+  color: rgba(255, 255, 255, 0.85);
+  transform: scale(1.1);
+}
+
+/* Skills — dusty blue cards */
+.portfolio-skills {
+  padding: 4rem 0;
+  background: var(--portfolio-bg);
+}
+
+.portfolio-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.portfolio-skill-card {
+  background: #000;
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portfolio-skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-skill-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.portfolio-skill-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-skill-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+}
+
+/* Our Works — project grid */
+.portfolio-works {
+  padding: 4rem 0;
+  background: #fff;
+}
+
+.portfolio-work-card {
+  background: var(--portfolio-card-blue);
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portfolio-work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(107, 124, 154, 0.35);
+}
+
+.portfolio-work-image-wrap {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px 16px 0 0;
+}
+
+.portfolio-work-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-work-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.25rem;
+}
+
+.portfolio-work-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-work-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.portfolio-work-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+
+/* Get in Touch — form with underlined inputs */
+.portfolio-contact {
+  padding: 4rem 0;
+  background: var(--portfolio-bg);
+}
+
+.portfolio-contact-form .form-label {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.portfolio-input-underline {
+  border: none !important;
+  border-bottom: 2px solid #ddd !important;
+  border-radius: 0 !important;
+  padding-left: 0 !important;
+  background: transparent !important;
+}
+
+.portfolio-input-underline:focus {
+  border-bottom-color: var(--portfolio-primary) !important;
+  box-shadow: none !important;
+}
+
+.portfolio-submit-btn {
+  background: #FA6868 !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+}
+
+.portfolio-submit-btn:hover {
+  background: #e85a5a !important;
+  color: #fff !important;
+}
+
+.portfolio-contact-illus {
+  max-width: 360px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(107, 124, 154, 0.2);
+}
+
+.portfolio-contact-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Footer */
+.portfolio-footer {
+  background: var(--portfolio-footer);
+  color: #1a1a2e;
+}
+
+.portfolio-footer-tagline {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.portfolio-footer-social .portfolio-social-icon {
+  color: var(--portfolio-primary);
+}
+
+.portfolio-footer-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.portfolio-footer-email {
+  font-size: 1rem;
+  color: var(--portfolio-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portfolio-footer-email:hover {
+  text-decoration: underline;
+  color: var(--portfolio-primary);
+}

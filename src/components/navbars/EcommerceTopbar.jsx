@@ -1,18 +1,18 @@
-import { Col, Dropdown, Nav, Navbar, Row } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { Col, Nav, Navbar, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import Logo from '../common/Logo';
 import SearchBox from '../common/SearchBox';
 import './EcommerceNavbar.css';
 import { useCart } from '../common/CartContext';
 
-const EcommerceTopbar = ({ onCartClick }) => {
+const EcommerceTopbar = () => {
   const { itemCount } = useCart();
+  const navigate = useNavigate();
 
-  const handleCartClick = (event) => {
-    event.preventDefault();
-    if (typeof onCartClick === 'function') {
-      onCartClick();
-    }
+  const handleCartClick = (e) => {
+    e.preventDefault();
+    navigate('/shop/cart');
   };
 
   return (
@@ -21,9 +21,9 @@ const EcommerceTopbar = ({ onCartClick }) => {
         <Navbar className="px-0 py-3">
           <Row className="gx-0 gy-2 w-100 align-items-center">
             <Col xs="auto" className="order-1">
-              <a href="/" className="text-decoration-none">
+              <Link to="/" className="text-decoration-none">
                 <Logo />
-              </a>
+              </Link>
             </Col>
             <Col xs={12} md={6} className="order-3 order-md-2">
               <div className="d-flex justify-content-center">

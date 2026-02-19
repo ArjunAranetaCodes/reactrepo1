@@ -1,3 +1,4 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useLayoutEffect, useRef } from 'react';
 import {
@@ -19,31 +20,12 @@ import {
 import './EcommerceNavbar.css';
 
 const initNavItems = [
-  {
-    id: 1,
-    label: 'Home',
-    url: '#home'
-  },
-  {
-    id: 2,
-    label: 'Products',
-    url: '#products'
-  },
-  {
-    id: 3,
-    label: 'Categories',
-    url: '#categories'
-  },
-  {
-    id: 4,
-    label: 'About',
-    url: '#about'
-  },
-  {
-    id: 5,
-    label: 'Contact',
-    url: '#contact'
-  }
+  { id: 1, label: 'Home', path: '/' },
+  { id: 2, label: 'Shop', path: '/shop' },
+  { id: 3, label: 'Products', section: 'products' },
+  { id: 4, label: 'Categories', section: 'categories' },
+  { id: 5, label: 'About', section: 'about' },
+  { id: 6, label: 'Contact', section: 'contact' }
 ];
 
 // Simplified categories data
@@ -77,12 +59,31 @@ const categories = [
   }
 ];
 
-const EcommerceNavbar = ({ onNavigate }) => {
+const EcommerceNavbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const containerRef = useRef(null);
   const otherElsRef = useRef(null);
   const moreBtnRef = useRef(null);
   const navItemsRef = useRef([]);
   const dropdownItemsRef = useRef([]);
+
+  const handleNavClick = (e, item) => {
+    if (item.path) {
+      e.preventDefault();
+      navigate(item.path);
+      return;
+    }
+    if (item.section) {
+      e.preventDefault();
+      if (location.pathname.startsWith('/shop')) {
+        const el = document.getElementById(item.section);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        navigate('/shop');
+      }
+    }
+  };
 
   const updateItems = useCallback(() => {
     const otherElsWidth = otherElsRef.current?.clientWidth || 0;
@@ -191,19 +192,19 @@ const EcommerceNavbar = ({ onNavigate }) => {
                 navItemsRef.current[index] = el;
               }}
             >
-              <Nav.Link
-                key={item.id}
-                href={item.url}
-                className={classNames('nav-link')}
-                onClick={(e) => {
-                  if (typeof onNavigate === 'function') {
-                    e.preventDefault();
-                    onNavigate(item.label.toLowerCase());
-                  }
-                }}
-              >
-                {item.label}
-              </Nav.Link>
+              {item.path ? (
+                <Nav.Link as={Link} to={item.path} className={classNames('nav-link')}>
+                  {item.label}
+                </Nav.Link>
+              ) : (
+                <Nav.Link
+                  href={`#${item.section}`}
+                  className={classNames('nav-link')}
+                  onClick={(e) => handleNavClick(e, item)}
+                >
+                  {item.label}
+                </Nav.Link>
+              )}
             </Nav.Item>
           ))}
           <Dropdown align="end" as={NavItem} ref={moreBtnRef}>
@@ -219,16 +220,13 @@ const EcommerceNavbar = ({ onNavigate }) => {
               {initNavItems.map((item, index) => (
                 <Dropdown.Item
                   key={item.id}
-                  href={item.url}
+                  as={item.path ? Link : undefined}
+                  to={item.path}
+                  href={item.section ? `#${item.section}` : undefined}
                   ref={(el) => {
                     dropdownItemsRef.current[index] = el;
                   }}
-                  onClick={(e) => {
-                    if (typeof onNavigate === 'function') {
-                      e.preventDefault();
-                      onNavigate(item.label.toLowerCase());
-                    }
-                  }}
+                  onClick={item.section ? (e) => handleNavClick(e, item) : undefined}
                 >
                   {item.label}
                 </Dropdown.Item>

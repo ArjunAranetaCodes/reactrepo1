@@ -3,3 +3,9 @@
   background: #ffffff;
   overflow-x: hidden;
 }
+
+/* Portfolio front page: full template style */
+.portfolio-main {
+  min-height: 100vh;
+  background: #faf6f2;
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
@@ -58,41 +58,75 @@ const SOCIAL_LINKS = [
   { Icon: Instagram, href: '#', label: 'Instagram' },
 ];
 
+const HEADER_PARALLAX_FACTOR = 0.4;
+
 function Portfolio() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
   };
 
+  const headerBgOffset = scrollY * HEADER_PARALLAX_FACTOR;
+
   return (
     <div className="portfolio-page">
-      <section id="about" className="portfolio-hero">
-        <div className="portfolio-hero-banner">
-          <Container>
-            <div className="portfolio-hero-content">
-              <h1 className="portfolio-hero-title">From Concept to Launch</h1>
-              <p className="portfolio-hero-subtitle">Let&apos;s work together</p>
-              <Button as={Link} to="/shop1" variant="primary" size="lg" className="portfolio-hero-btn">
-                HIRE US NOW →
-              </Button>
-              <div className="portfolio-hero-social">
-                {SOCIAL_LINKS.map(({ Icon, href, label }) => (
-                  <a key={label} href={href} className="portfolio-social-icon" aria-label={label}>
-                    <Icon size={22} />
-                  </a>
-                ))}
-              </div>
-            </div>
+      {/* Header: parallax image + Welcome & CTA blocks inside */}
+      <header className="portfolio-header-banner" id="about">
+        <div
+          className="portfolio-header-banner-bg"
+          style={{
+            backgroundImage: 'url(/portfolio/mini-profile-bg-01.jpg)',
+            transform: `translate3d(0, ${headerBgOffset}px, 0)`,
+          }}
+          aria-hidden="true"
+        />
+        <div className="portfolio-header-banner-overlay" aria-hidden="true" />
+        <div className="portfolio-header-banner-strip">
+          <Container fluid className="portfolio-hero-container">
+            <Row className="portfolio-hero-row g-0">
+              <Col md={5} className="portfolio-hero-left">
+                <div className="portfolio-hero-welcome">
+                  <h2 className="portfolio-hero-welcome-title">Welcome</h2>
+                  <p className="portfolio-hero-welcome-text">Stores, landing pages, and brands. Let&apos;s work together.</p>
+                </div>
+              </Col>
+              <Col md={7} className="portfolio-hero-right">
+                <div className="portfolio-hero-block portfolio-hero-block-gray">
+                  <h1 className="portfolio-hero-title">From Concept to Launch</h1>
+                  <p className="portfolio-hero-subtitle">Web &amp; digital studio — we design and build sites that work.</p>
+                </div>
+                <div className="portfolio-hero-block portfolio-hero-block-brown">
+                  <Button as={Link} to="/shop1" variant="primary" size="lg" className="portfolio-hero-btn">
+                    Get in touch →
+                  </Button>
+                  <div className="portfolio-hero-social">
+                    {SOCIAL_LINKS.map(({ Icon, href, label }) => (
+                      <a key={label} href={href} className="portfolio-social-icon" aria-label={label}>
+                        <Icon size={22} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </Container>
         </div>
-      </section>
+      </header>
 
       <section className="portfolio-skills">
         <Container>
+          <h2 className="portfolio-section-title text-center mb-4">What we use</h2>
           <Row className="g-4 justify-content-center">
             {SKILLS.map((s) => (
               <Col key={s.name} xs={12} sm={6} md={6} lg={3}>
@@ -137,11 +171,18 @@ function Portfolio() {
         </Container>
       </section>
 
-      <section className="portfolio-contact" id="contact">
+      <section id="contact" className="portfolio-contact">
+        <div
+          className="portfolio-contact-bg"
+          style={{ backgroundImage: 'url(/portfolio/mini-profile-bg-02.jpg)' }}
+          aria-hidden="true"
+        />
+        <div className="portfolio-contact-overlay" aria-hidden="true" />
+        <div className="portfolio-contact-inner">
         <Container>
-          <Row className="align-items-center g-4">
+          <h2 className="portfolio-section-title text-center mb-4">Get in Touch</h2>
+          <Row className="align-items-center g-4 justify-content-center">
             <Col lg={6}>
-              <h2 className="portfolio-section-title mb-4">Get in Touch</h2>
               <Form onSubmit={handleContactSubmit} className="portfolio-contact-form">
                 <Form.Group className="mb-3">
                   <Form.Label>Name</Form.Label>
@@ -182,6 +223,7 @@ function Portfolio() {
             </Col>
           </Row>
         </Container>
+        </div>
       </section>
 
       <footer className="portfolio-footer">

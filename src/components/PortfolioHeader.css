@@ -23,7 +23,7 @@
   justify-content: center;
   min-height: 44px;
   padding: 0 1rem;
-  background: #FA6868;
+  background: #e85a5a;
   color: #fff;
   font-weight: 700;
   font-size: 0.95rem;
@@ -52,8 +52,8 @@
 }
 
 .portfolio-nav-link:hover {
-  color: #6b7c9a !important;
-  background: rgba(107, 124, 154, 0.08);
+  color: #c85a5a !important;
+  background: rgba(232, 90, 90, 0.08);
 }
 
 .portfolio-nav-toggle {

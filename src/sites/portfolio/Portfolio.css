@@ -1,3 +1,5 @@
+@import './portfolio-typography.css';
+
 /* Template: clean block layout, light bg */
 :root {
   --portfolio-primary: #1a1a2e;
@@ -7,11 +9,45 @@
   --portfolio-card: #2d3a4d;
   --portfolio-footer: #1a1a2e;
   --portfolio-accent: #e07c4a;
+  --portfolio-coral: #e85a5a;
+  --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --card-duration: 0.35s;
 }
 
 .portfolio-page {
   min-height: 100vh;
   background: var(--portfolio-bg);
+}
+
+/* Scroll-triggered reveal */
+.portfolio-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s var(--card-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    transform 0.7s var(--card-ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.portfolio-reveal.h-100 {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-reveal.h-100 > * {
+  flex: 1 1 auto;
+}
+
+.portfolio-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Header: parallax image + content strip centered vertically */
@@ -237,13 +273,29 @@
 
 .portfolio-skill-card {
   background: var(--portfolio-primary);
-  border-radius: 12px;
-  transition: transform 0.25s, box-shadow 0.25s;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    transform var(--card-duration) var(--card-ease),
+    box-shadow var(--card-duration) var(--card-ease),
+    border-color var(--card-duration) var(--card-ease);
 }
 
 .portfolio-skill-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(26, 35, 50, 0.25);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 20px 40px rgba(26, 35, 50, 0.35),
+    0 0 0 1px rgba(232, 90, 90, 0.35);
+  border-color: rgba(232, 90, 90, 0.45);
+}
+
+.portfolio-skill-card:hover .portfolio-skill-icon {
+  transform: scale(1.12);
+}
+
+.portfolio-skill-card:focus-visible {
+  outline: 2px solid var(--portfolio-coral);
+  outline-offset: 3px;
 }
 
 .portfolio-skill-icon {
@@ -251,6 +303,7 @@
   display: block;
   margin-bottom: 0.5rem;
   color: #fff;
+  transition: transform var(--card-duration) var(--card-ease);
 }
 
 .portfolio-skill-name {
@@ -274,28 +327,47 @@
 
 .portfolio-work-card {
   background: var(--portfolio-card);
-  border-radius: 12px;
-  transition: transform 0.25s, box-shadow 0.25s;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  transition:
+    transform var(--card-duration) var(--card-ease),
+    box-shadow var(--card-duration) var(--card-ease),
+    border-color var(--card-duration) var(--card-ease);
 }
 
 .portfolio-work-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(26, 35, 50, 0.2);
+  transform: translateY(-10px);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.22),
+    0 12px 24px rgba(232, 90, 90, 0.1),
+    0 0 0 1px rgba(232, 90, 90, 0.28);
+  border-color: rgba(232, 90, 90, 0.32);
+}
+
+.portfolio-work-card:focus-within {
+  outline: 2px solid var(--portfolio-coral);
+  outline-offset: 3px;
 }
 
 .portfolio-work-image-wrap {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px 12px 0 0;
+  border-radius: 14px 14px 0 0;
+}
+
+.portfolio-work-card:hover .portfolio-work-image {
+  transform: scale(1.05);
 }
 
 .portfolio-work-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px 12px 0 0;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px 14px 0 0;
+  border: none;
+  transition: transform 0.55s var(--card-ease);
 }
 
 .portfolio-work-category {
@@ -320,11 +392,20 @@
   color: #fff;
   text-decoration: underline;
   text-underline-offset: 2px;
+  display: inline-block;
+  transition:
+    color 0.2s ease,
+    transform 0.25s var(--card-ease);
+}
+
+.portfolio-work-card:hover .portfolio-work-link {
+  color: rgba(255, 255, 255, 1);
 }
 
 .portfolio-work-link:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 1) !important;
   text-decoration: underline;
+  transform: translateX(4px);
 }
 
 /* Get in Touch */

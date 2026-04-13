@@ -1,0 +1,92 @@
+/* Refined pairing: Fraunces (display) + Source Sans 3 (UI/body) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --portfolio-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --portfolio-font-body: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.portfolio-page,
+.portfolio-header {
+  font-family: var(--portfolio-font-body);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display font — major headings */
+.portfolio-hero-title,
+.portfolio-hero-welcome-title,
+.portfolio-section-title,
+.portfolio-work-title,
+.portfolio-skill-name,
+.portfolio-footer-tagline {
+  font-family: var(--portfolio-font-display);
+  font-weight: 600;
+}
+
+.portfolio-hero-title {
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.portfolio-hero-welcome-title {
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.portfolio-section-title {
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.portfolio-work-title,
+.portfolio-skill-name {
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.portfolio-footer-tagline {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Body copy */
+.portfolio-hero-welcome-text,
+.portfolio-hero-subtitle {
+  font-family: var(--portfolio-font-body);
+  line-height: 1.65;
+}
+
+.portfolio-skill-text {
+  line-height: 1.55;
+}
+
+.portfolio-work-category {
+  font-family: var(--portfolio-font-body);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.portfolio-work-link,
+.portfolio-hero-btn {
+  font-family: var(--portfolio-font-body);
+  font-weight: 600;
+}
+
+.portfolio-contact-form .form-label {
+  font-family: var(--portfolio-font-body);
+  font-weight: 600;
+}
+
+.portfolio-submit-btn {
+  font-family: var(--portfolio-font-body);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.portfolio-footer-label,
+.portfolio-footer-email {
+  font-family: var(--portfolio-font-body);
+}

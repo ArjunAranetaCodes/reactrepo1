@@ -1,3 +1,5 @@
+@import '../sites/portfolio/portfolio-typography.css';
+
 .portfolio-header {
   background: #fff;
   border-bottom: 1px solid rgba(107, 124, 154, 0.15);
@@ -25,7 +27,8 @@
   padding: 0 1rem;
   background: #e85a5a;
   color: #fff;
-  font-weight: 700;
+  font-family: var(--portfolio-font-display, Georgia, serif);
+  font-weight: 600;
   font-size: 0.95rem;
   border-radius: 10px;
   letter-spacing: -0.02em;
@@ -43,8 +46,10 @@
 
 .portfolio-nav-link {
   color: #1a1a2e !important;
+  font-family: var(--portfolio-font-body, system-ui, sans-serif);
   font-weight: 500;
   font-size: 0.95rem;
+  letter-spacing: 0.01em;
   text-decoration: none !important;
   padding: 0.4rem 0.6rem !important;
   border-radius: 8px;

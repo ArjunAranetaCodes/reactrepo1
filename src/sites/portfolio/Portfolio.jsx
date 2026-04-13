@@ -12,6 +12,7 @@ import terraNovaThumb from '../thumbnails/terra-nova.png';
 import healthCenterThumb from '../thumbnails/health-center.png';
 import softLandingThumb from '../thumbnails/soft-landing.png';
 import cloudSyncThumb from '../thumbnails/cloud-sync.png';
+import RevealOnScroll from './RevealOnScroll';
 import './Portfolio.css';
 
 const THUMBNAILS = {
@@ -125,46 +126,54 @@ function Portfolio() {
       </header>
 
       <section className="portfolio-skills">
-        <Container>
-          <h2 className="portfolio-section-title text-center mb-4">What we use</h2>
-          <Row className="g-4 justify-content-center">
-            {SKILLS.map((s) => (
-              <Col key={s.name} xs={12} sm={6} md={6} lg={3}>
-                <Card className="portfolio-skill-card h-100 border-0">
-                  <Card.Body className="text-center p-4">
-                    <span className="portfolio-skill-icon">{s.icon}</span>
-                    <Card.Title className="portfolio-skill-name">{s.name}</Card.Title>
-                    <Card.Text className="portfolio-skill-text">{s.text}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
+        <RevealOnScroll>
+          <Container>
+            <h2 className="portfolio-section-title text-center mb-4">What we use</h2>
+            <Row className="g-4 justify-content-center">
+              {SKILLS.map((s, index) => (
+                <Col key={s.name} xs={12} sm={6} md={6} lg={3}>
+                  <RevealOnScroll className="h-100" delayMs={index * 90}>
+                    <Card className="portfolio-skill-card h-100 border-0">
+                      <Card.Body className="text-center p-4">
+                        <span className="portfolio-skill-icon">{s.icon}</span>
+                        <Card.Title className="portfolio-skill-name">{s.name}</Card.Title>
+                        <Card.Text className="portfolio-skill-text">{s.text}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </RevealOnScroll>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </RevealOnScroll>
       </section>
 
       <section id="portfolio" className="portfolio-works">
         <Container>
-          <h2 className="portfolio-section-title text-center mb-5">Our Works</h2>
+          <RevealOnScroll>
+            <h2 className="portfolio-section-title text-center mb-5">Our Works</h2>
+          </RevealOnScroll>
           <Row className="g-4">
-            {SITES.map((site) => (
+            {SITES.map((site, index) => (
               <Col key={site.id} xs={12} sm={6} lg={4}>
-                <Card className="portfolio-work-card border-0 h-100 overflow-hidden">
-                  <div className="portfolio-work-image-wrap">
-                    <img src={site.image} alt={site.title} className="portfolio-work-image" />
-                  </div>
-                  <Card.Body className="p-3">
-                    <span className="portfolio-work-category">{site.category}</span>
-                    <Card.Title className="portfolio-work-title">{site.title}</Card.Title>
-                    {site.internal ? (
-                      <Button as={Link} to={site.url} variant="link" className="portfolio-work-link p-0 text-decoration-none">
-                        View site →
-                      </Button>
-                    ) : (
-                      <a href={site.url} className="portfolio-work-link text-decoration-none">View site →</a>
-                    )}
-                  </Card.Body>
-                </Card>
+                <RevealOnScroll className="h-100" delayMs={index * 75}>
+                  <Card className="portfolio-work-card border-0 h-100">
+                    <div className="portfolio-work-image-wrap">
+                      <img src={site.image} alt={site.title} className="portfolio-work-image" />
+                    </div>
+                    <Card.Body className="p-3">
+                      <span className="portfolio-work-category">{site.category}</span>
+                      <Card.Title className="portfolio-work-title">{site.title}</Card.Title>
+                      {site.internal ? (
+                        <Button as={Link} to={site.url} variant="link" className="portfolio-work-link p-0 text-decoration-none">
+                          View site →
+                        </Button>
+                      ) : (
+                        <a href={site.url} className="portfolio-work-link text-decoration-none">View site →</a>
+                      )}
+                    </Card.Body>
+                  </Card>
+                </RevealOnScroll>
               </Col>
             ))}
           </Row>
@@ -179,6 +188,7 @@ function Portfolio() {
         />
         <div className="portfolio-contact-overlay" aria-hidden="true" />
         <div className="portfolio-contact-inner">
+        <RevealOnScroll>
         <Container>
           <h2 className="portfolio-section-title text-center mb-4">Get in Touch</h2>
           <Row className="align-items-center g-4 justify-content-center">
@@ -223,10 +233,12 @@ function Portfolio() {
             </Col>
           </Row>
         </Container>
+        </RevealOnScroll>
         </div>
       </section>
 
       <footer className="portfolio-footer">
+        <RevealOnScroll>
         <Container>
           <Row className="align-items-center py-4">
             <Col md={6} className="text-center text-md-start mb-3 mb-md-0">
@@ -245,6 +257,7 @@ function Portfolio() {
             </Col>
           </Row>
         </Container>
+        </RevealOnScroll>
       </footer>
     </div>
   );

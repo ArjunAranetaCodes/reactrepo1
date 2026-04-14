@@ -7,7 +7,7 @@ const Logo = ({ width = 27, text = true, textClass, className }) => {
         style={{ 
           width: width, 
           height: width, 
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, #03AED2 0%, #D12052 100%)',
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',

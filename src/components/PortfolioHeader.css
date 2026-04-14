@@ -2,7 +2,7 @@
 
 .portfolio-header {
   background: #fff;
-  border-bottom: 1px solid rgba(107, 124, 154, 0.15);
+  border-bottom: 1px solid rgba(3, 174, 210, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -25,7 +25,7 @@
   justify-content: center;
   min-height: 44px;
   padding: 0 1rem;
-  background: #e85a5a;
+  background: #03aed2;
   color: #fff;
   font-family: var(--portfolio-font-display, Georgia, serif);
   font-weight: 600;
@@ -57,14 +57,14 @@
 }
 
 .portfolio-nav-link:hover {
-  color: #c85a5a !important;
-  background: rgba(232, 90, 90, 0.08);
+  color: #03aed2 !important;
+  background: rgba(3, 174, 210, 0.1);
 }
 
 .portfolio-nav-toggle {
-  border-color: rgba(107, 124, 154, 0.3);
+  border-color: rgba(3, 174, 210, 0.35);
 }
 
 .portfolio-nav-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(107, 124, 154, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(3, 174, 210, 0.25);
 }

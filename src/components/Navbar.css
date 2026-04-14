@@ -1,5 +1,5 @@
 .custom-navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #03aed2 0%, #d12052 100%) !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
   z-index: 1030;
@@ -20,7 +20,7 @@
 }
 
 .brand-subtext {
-  color: #ffd700;
+  color: #f8de22;
   font-weight: 300;
 }
 
@@ -43,7 +43,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #ffd700;
+  background: #f8de22;
   transition: width 0.3s ease;
 }
 
@@ -115,7 +115,7 @@
 }
 
 .icon-button:hover {
-  color: #ffd700 !important;
+  color: #f8de22 !important;
   transform: scale(1.1);
 }
 
@@ -123,7 +123,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: #ff4757;
+  background: #d12052;
   color: #ffffff;
   border-radius: 50%;
   width: 18px;

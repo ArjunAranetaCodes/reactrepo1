@@ -2,21 +2,42 @@
 
 /* Template: clean block layout, light bg */
 :root {
-  --portfolio-primary: #1a1a2e;
-  --portfolio-gray: #737373;
-  --portfolio-brown: #9a6a6a;
-  --portfolio-bg: #f8f7f5;
-  --portfolio-card: #2d3a4d;
-  --portfolio-footer: #1a1a2e;
-  --portfolio-accent: #e07c4a;
-  --portfolio-coral: #e85a5a;
+  --portfolio-primary: #0f1a1f;
+  --portfolio-gray: #5a6d75;
+  --portfolio-brown: #d12052;
+  --portfolio-bg: #f2fafc;
+  --portfolio-card: #153b47;
+  --portfolio-footer: #0d181c;
+  --portfolio-accent: #f45b26;
+  --portfolio-coral: #d12052;
   --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --card-duration: 0.35s;
 }
 
 .portfolio-page {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   background: var(--portfolio-bg);
+}
+
+/* Very light full-page grain — sits above bg, below all sections */
+.portfolio-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--grain-noise);
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+}
+
+.portfolio-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Scroll-triggered reveal */
@@ -77,7 +98,12 @@
 .portfolio-header-banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(240, 130, 130, 0.48);
+  background: linear-gradient(
+    120deg,
+    rgba(3, 174, 210, 0.38) 0%,
+    rgba(209, 32, 82, 0.32) 50%,
+    rgba(244, 91, 38, 0.28) 100%
+  );
 }
 
 .portfolio-header-banner-strip {
@@ -115,7 +141,7 @@
   display: flex;
   align-items: center;
   padding: 3rem 2rem 3rem 2.5rem;
-  background: rgba(235, 195, 195, 0.88);
+  background: rgba(248, 222, 34, 0.42);
 }
 
 .portfolio-hero-welcome {
@@ -153,12 +179,12 @@
 }
 
 .portfolio-hero-block-gray {
-  background-color: rgba(200, 100, 100, 0.9);
+  background: linear-gradient(135deg, rgba(209, 32, 82, 0.95) 0%, rgba(244, 91, 38, 0.92) 100%);
   color: #fff;
 }
 
 .portfolio-hero-block-brown {
-  background-color: #1a1a1a;
+  background: linear-gradient(145deg, #062a32 0%, #1a0a12 100%);
   color: #fff;
   gap: 1.25rem;
 }
@@ -178,18 +204,18 @@
 }
 
 .portfolio-hero-btn {
-  background: #000 !important;
-  color: #fff !important;
+  background: #03aed2 !important;
+  color: #0f1a1f !important;
   border: none !important;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.2s, color 0.2s;
 }
 
 .portfolio-hero-btn:hover {
-  background: #333 !important;
-  color: #fff !important;
+  background: #f8de22 !important;
+  color: #0f1a1f !important;
   transform: translateY(-2px);
 }
 
@@ -249,7 +275,7 @@
 .portfolio-contact-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(248, 247, 245, 0.82);
+  background: rgba(242, 250, 252, 0.88);
   pointer-events: none;
 }
 
@@ -284,9 +310,9 @@
 .portfolio-skill-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow:
-    0 20px 40px rgba(26, 35, 50, 0.35),
-    0 0 0 1px rgba(232, 90, 90, 0.35);
-  border-color: rgba(232, 90, 90, 0.45);
+    0 20px 40px rgba(15, 26, 31, 0.35),
+    0 0 0 1px rgba(3, 174, 210, 0.4);
+  border-color: rgba(248, 222, 34, 0.45);
 }
 
 .portfolio-skill-card:hover .portfolio-skill-icon {
@@ -340,9 +366,9 @@
   transform: translateY(-10px);
   box-shadow:
     0 24px 48px rgba(0, 0, 0, 0.22),
-    0 12px 24px rgba(232, 90, 90, 0.1),
-    0 0 0 1px rgba(232, 90, 90, 0.28);
-  border-color: rgba(232, 90, 90, 0.32);
+    0 12px 24px rgba(244, 91, 38, 0.12),
+    0 0 0 1px rgba(209, 32, 82, 0.3);
+  border-color: rgba(3, 174, 210, 0.35);
 }
 
 .portfolio-work-card:focus-within {
@@ -415,7 +441,7 @@
 
 .portfolio-contact-form .form-label {
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--portfolio-primary);
 }
 
 .portfolio-input-underline {
@@ -427,7 +453,7 @@
 }
 
 .portfolio-input-underline:focus {
-  border-bottom-color: var(--portfolio-accent) !important;
+  border-bottom-color: #03aed2 !important;
   box-shadow: none !important;
 }
 
@@ -441,7 +467,7 @@
 }
 
 .portfolio-submit-btn:hover {
-  background: #c96a38 !important;
+  background: #d12052 !important;
   color: #fff !important;
 }
 
@@ -450,7 +476,7 @@
   margin: 0 auto;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(107, 124, 154, 0.2);
+  box-shadow: 0 10px 40px rgba(3, 174, 210, 0.18);
 }
 
 .portfolio-contact-image {

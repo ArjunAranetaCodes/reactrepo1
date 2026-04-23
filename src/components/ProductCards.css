@@ -86,15 +86,15 @@
 .overlay-btn:hover {
   background: #ffffff;
   transform: scale(1.1);
-  color: #03aed2;
+  color: #605b51;
 }
 
 .badge-featured {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: linear-gradient(135deg, #03aed2 0%, #d12052 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #454040 0%, #605b51 100%);
+  color: #fff59a;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -120,7 +120,7 @@
 }
 
 .product-title a:hover {
-  color: #03aed2;
+  color: #605b51;
 }
 
 .product-description {
@@ -146,15 +146,15 @@
   border-radius: 8px;
   padding: 0.75rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #f45b26 0%, #d12052 100%);
+  background: linear-gradient(135deg, #454040 0%, #605b51 100%);
   border: none;
   transition: all 0.3s ease;
 }
 
 .add-to-cart-btn:hover {
-  background: linear-gradient(135deg, #e04d1c 0%, #b81a45 100%);
+  background: linear-gradient(135deg, #605b51 0%, #454040 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(209, 32, 82, 0.35);
+  box-shadow: 0 4px 12px rgba(69, 64, 64, 0.25);
 }
 
 .loading-container,

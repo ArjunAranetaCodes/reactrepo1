@@ -1,5 +1,5 @@
 .custom-footer {
-  background: linear-gradient(135deg, #0a1c22 0%, #1a0a14 100%);
+  background: linear-gradient(135deg, #454040 0%, #605b51 100%);
   color: #e2e8f0;
   padding: 3rem 0 1rem;
   margin-top: 4rem;
@@ -23,7 +23,7 @@
 }
 
 .footer-brand .brand-subtext {
-  color: #f8de22;
+  color: #fff59a;
   font-weight: 300;
 }
 
@@ -52,8 +52,8 @@
 }
 
 .social-link:hover {
-  background: linear-gradient(135deg, #03aed2 0%, #f45b26 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #efd040 0%, #fff59a 100%);
+  color: #454040;
   transform: translateY(-3px);
 }
 
@@ -103,7 +103,7 @@
 .contact-icon {
   margin-right: 0.75rem;
   margin-top: 0.25rem;
-  color: #03aed2;
+  color: #efd040;
   flex-shrink: 0;
 }
 

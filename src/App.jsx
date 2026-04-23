@@ -3,6 +3,7 @@ import EcommerceTopbar from './components/navbars/EcommerceTopbar';
 import EcommerceNavbar from './components/navbars/EcommerceNavbar';
 import PortfolioHeader from './components/PortfolioHeader';
 import Portfolio from './sites/portfolio';
+import WhoWeAre from './sites/portfolio/WhoWeAre';
 import Shop from './pages/Shop';
 import Shop2Page from './sites/shop2/Shop2Page';
 import Shop3Page from './sites/shop3/Shop3Page';
@@ -64,6 +65,7 @@ function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/" element={<Portfolio />} />
+            <Route path="/who-we-are" element={<WhoWeAre />} />
             <Route path="/shop" element={<Navigate to="/shop1" replace />} />
             <Route path="/shop/cart" element={<Navigate to="/shop1/cart" replace />} />
             <Route path="/shop/checkout" element={<Navigate to="/shop1/checkout" replace />} />

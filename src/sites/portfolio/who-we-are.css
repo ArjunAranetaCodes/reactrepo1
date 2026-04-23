@@ -1,0 +1,167 @@
+/* Who we are — matches portfolio palette (tokens duplicated so the page works on direct load) */
+
+.who-we-are-page {
+  --portfolio-primary: #454040;
+  --portfolio-gray: #605b51;
+  --portfolio-bg: #f7f7f5;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background: var(--portfolio-bg);
+}
+
+.who-we-are-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--grain-noise);
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+}
+
+.who-we-are-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.who-we-are-hero {
+  padding: 3rem 0 3.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(69, 64, 64, 0.08) 0%,
+    rgba(96, 91, 81, 0.08) 45%,
+    rgba(239, 208, 64, 0.22) 100%
+  );
+  border-bottom: 1px solid rgba(96, 91, 81, 0.15);
+}
+
+.who-we-are-kicker {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--portfolio-gray);
+  margin-bottom: 0.75rem;
+}
+
+.who-we-are-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--portfolio-primary);
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+  line-height: 1.15;
+}
+
+.who-we-are-lede {
+  font-size: 1.125rem;
+  color: var(--portfolio-gray);
+  max-width: 52ch;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.who-we-are-section {
+  padding: 3.5rem 0;
+}
+
+.who-we-are-section-alt {
+  background: #fff;
+  border-top: 1px solid rgba(96, 91, 81, 0.12);
+  border-bottom: 1px solid rgba(96, 91, 81, 0.12);
+}
+
+.who-we-are-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--portfolio-primary);
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.who-we-are-body {
+  font-size: 1.05rem;
+  color: var(--portfolio-gray);
+  line-height: 1.75;
+  max-width: 65ch;
+}
+
+.who-we-are-body p {
+  margin-bottom: 1rem;
+}
+
+.who-we-are-body p:last-child {
+  margin-bottom: 0;
+}
+
+.who-we-are-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.who-we-are-value-card {
+  background: var(--portfolio-primary);
+  color: #fff;
+  border-radius: 14px;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.who-we-are-value-card h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.who-we-are-value-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.55;
+}
+
+.who-we-are-cta {
+  padding: 3rem 0 4rem;
+  text-align: center;
+}
+
+.who-we-are-cta-inner {
+  background: linear-gradient(135deg, rgba(239, 208, 64, 0.22) 0%, rgba(255, 245, 154, 0.3) 100%);
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(96, 91, 81, 0.2);
+}
+
+.who-we-are-cta-text {
+  font-size: 1.125rem;
+  color: var(--portfolio-primary);
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+}
+
+.who-we-are-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 1.35rem;
+  background: #454040;
+  color: #fff59a !important;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.who-we-are-cta-btn:hover {
+  background: #605b51;
+  color: #fff59a !important;
+  transform: translateY(-2px);
+}

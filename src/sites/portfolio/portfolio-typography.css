@@ -16,8 +16,8 @@
 }
 
 /* Display font — major headings */
+.portfolio-wwd-headline,
 .portfolio-hero-title,
-.portfolio-hero-welcome-title,
 .portfolio-section-title,
 .portfolio-work-title,
 .portfolio-skill-name,
@@ -26,14 +26,14 @@
   font-weight: 600;
 }
 
+.portfolio-wwd-headline {
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+}
+
 .portfolio-hero-title {
   letter-spacing: -0.03em;
   line-height: 1.15;
-}
-
-.portfolio-hero-welcome-title {
-  letter-spacing: -0.02em;
-  line-height: 1.2;
 }
 
 .portfolio-section-title {
@@ -53,7 +53,6 @@
 }
 
 /* Body copy */
-.portfolio-hero-welcome-text,
 .portfolio-hero-subtitle {
   font-family: var(--portfolio-font-body);
   line-height: 1.65;

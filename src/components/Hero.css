@@ -55,15 +55,15 @@
 }
 
 .hero-slide-1::before {
-  background: linear-gradient(135deg, rgba(3, 174, 210, 0.82) 0%, rgba(209, 32, 82, 0.82) 100%);
+  background: linear-gradient(135deg, rgba(69, 64, 64, 0.82) 0%, rgba(96, 91, 81, 0.82) 100%);
 }
 
 .hero-slide-2::before {
-  background: linear-gradient(135deg, rgba(244, 91, 38, 0.85) 0%, rgba(248, 222, 34, 0.72) 100%);
+  background: linear-gradient(135deg, rgba(96, 91, 81, 0.85) 0%, rgba(239, 208, 64, 0.75) 100%);
 }
 
 .hero-slide-3::before {
-  background: linear-gradient(135deg, rgba(209, 32, 82, 0.82) 0%, rgba(3, 174, 210, 0.82) 100%);
+  background: linear-gradient(135deg, rgba(239, 208, 64, 0.82) 0%, rgba(255, 245, 154, 0.75) 100%);
 }
 
 .hero-slide::after {
@@ -80,15 +80,15 @@
 }
 
 .hero-slide-1 {
-  background: linear-gradient(135deg, #03aed2 0%, #d12052 100%);
+  background: linear-gradient(135deg, #454040 0%, #605b51 100%);
 }
 
 .hero-slide-2 {
-  background: linear-gradient(135deg, #f45b26 0%, #f8de22 100%);
+  background: linear-gradient(135deg, #605b51 0%, #efd040 100%);
 }
 
 .hero-slide-3 {
-  background: linear-gradient(135deg, #d12052 0%, #03aed2 100%);
+  background: linear-gradient(135deg, #efd040 0%, #fff59a 100%);
 }
 
 .hero-content {

@@ -2,7 +2,7 @@
 
 .portfolio-header {
   background: #fff;
-  border-bottom: 1px solid rgba(3, 174, 210, 0.2);
+  border-bottom: 1px solid rgba(69, 64, 64, 0.12);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -25,8 +25,8 @@
   justify-content: center;
   min-height: 44px;
   padding: 0 1rem;
-  background: #03aed2;
-  color: #fff;
+  background: #efd040;
+  color: #454040;
   font-family: var(--portfolio-font-display, Georgia, serif);
   font-weight: 600;
   font-size: 0.95rem;
@@ -45,7 +45,7 @@
 }
 
 .portfolio-nav-link {
-  color: #1a1a2e !important;
+  color: #454040 !important;
   font-family: var(--portfolio-font-body, system-ui, sans-serif);
   font-weight: 500;
   font-size: 0.95rem;
@@ -57,14 +57,19 @@
 }
 
 .portfolio-nav-link:hover {
-  color: #03aed2 !important;
-  background: rgba(3, 174, 210, 0.1);
+  color: #605b51 !important;
+  background: rgba(239, 208, 64, 0.22);
+}
+
+.portfolio-nav-link-active {
+  color: #454040 !important;
+  background: rgba(255, 245, 154, 0.4);
 }
 
 .portfolio-nav-toggle {
-  border-color: rgba(3, 174, 210, 0.35);
+  border-color: rgba(96, 91, 81, 0.35);
 }
 
 .portfolio-nav-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(3, 174, 210, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(239, 208, 64, 0.35);
 }

@@ -6,10 +6,16 @@
 
 :root {
   /* Brand palette */
-  --palette-cyan: #03aed2;
-  --palette-yellow: #f8de22;
-  --palette-orange: #f45b26;
-  --palette-magenta: #d12052;
+  --palette-ink: #454040;
+  --palette-stone: #605b51;
+  --palette-lime: #efd040;
+  --palette-lime-bright: #fff59a;
+
+  /* Legacy aliases (shops / older components) */
+  --palette-cyan: var(--palette-lime);
+  --palette-yellow: var(--palette-lime-bright);
+  --palette-orange: var(--palette-stone);
+  --palette-magenta: var(--palette-ink);
 
   /* Subtle film grain (SVG fractal noise), used on portfolio + shop hero */
   --grain-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
@@ -19,7 +25,7 @@
   line-height: 1.6;
   font-weight: 400;
 
-  color: #2d3748;
+  color: var(--palette-ink);
   background-color: #ffffff;
 
   font-synthesis: none;
@@ -40,20 +46,21 @@ body {
   min-height: 100vh;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+/* Custom scrollbar — scope to the document only so inner overflow containers
+   don’t pick up the same styling (avoids “two cyan bars” confusion). */
+html::-webkit-scrollbar {
   width: 10px;
 }
 
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #03aed2;
+html::-webkit-scrollbar-thumb {
+  background: var(--palette-lime);
   border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #0288a8;
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--palette-stone);
 }

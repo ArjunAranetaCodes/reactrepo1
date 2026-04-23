@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 import { shopSlugs, getShopConfig } from '../shops';
@@ -13,6 +13,7 @@ import healthCenterThumb from '../thumbnails/health-center.png';
 import softLandingThumb from '../thumbnails/soft-landing.png';
 import cloudSyncThumb from '../thumbnails/cloud-sync.png';
 import RevealOnScroll from './RevealOnScroll';
+import AaWebStudiosBanner from '../../components/AaWebStudiosBanner';
 import './Portfolio.css';
 
 const THUMBNAILS = {
@@ -31,6 +32,45 @@ const SKILLS = [
   { name: 'WordPress', text: 'Themes, plugins, and headless setups.', icon: '📝' },
   { name: 'React.js', text: 'Fast, modern front-end applications.', icon: '⚛️' },
   { name: 'Java', text: 'Backend services, APIs, and enterprise applications.', icon: '☕' },
+];
+
+const WHAT_WE_DO_SERVICES = [
+  {
+    id: 'web-dev',
+    label: 'Website development',
+    detail:
+      'Marketing sites, content-managed builds, and performance-focused launches — structured so your team can keep publishing with confidence.',
+  },
+  {
+    id: 'ux',
+    label: 'User experience design',
+    detail:
+      'Research-informed layouts, flows, and UI patterns that reduce friction for visitors and align with how your organisation actually works.',
+  },
+  {
+    id: 'hosting',
+    label: 'Hosting and support',
+    detail:
+      'Stable hosting options and a responsive support rhythm so releases, fixes, and routine care do not fall through the cracks.',
+  },
+  {
+    id: 'platform',
+    label: 'Platform development',
+    detail:
+      'Tailored internal tools and customer-facing platforms when off-the-shelf products do not match your workflows or integrations.',
+  },
+  {
+    id: 'saas',
+    label: 'Software as a service (SaaS)',
+    detail:
+      'Product-minded builds with scalability, permissions, and iteration in mind — from early pilots to steady-state operations.',
+  },
+  {
+    id: 'brand',
+    label: 'Brand design',
+    detail:
+      'Logo, typography, and visual direction that translate cleanly across web and collateral — cohesive without feeling generic.',
+  },
 ];
 
 // Build SITES from shop configs + company sites + any external links
@@ -59,71 +99,113 @@ const SOCIAL_LINKS = [
   { Icon: Instagram, href: '#', label: 'Instagram' },
 ];
 
-const HEADER_PARALLAX_FACTOR = 0.4;
-
 function Portfolio() {
+  const location = useLocation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  const [whatWeDoOpenId, setWhatWeDoOpenId] = useState(null);
 
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const hash = location.hash?.replace(/^#/, '');
+    if (!hash) return undefined;
+    const allowed = new Set(['about', 'services', 'portfolio', 'contact']);
+    if (!allowed.has(hash)) return undefined;
+    const t = window.setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, [location.pathname, location.hash]);
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
   };
 
-  const headerBgOffset = scrollY * HEADER_PARALLAX_FACTOR;
-
   return (
     <div className="portfolio-page">
-      {/* Header: parallax image + Welcome & CTA blocks inside */}
+      {/* Header: brand banner (SVG + CTA on gradient only — no photo) */}
       <header className="portfolio-header-banner" id="about">
-        <div
-          className="portfolio-header-banner-bg"
-          style={{
-            backgroundImage: 'url(/portfolio/mini-profile-bg-01.jpg)',
-            transform: `translate3d(0, ${headerBgOffset}px, 0)`,
-          }}
-          aria-hidden="true"
-        />
-        <div className="portfolio-header-banner-overlay" aria-hidden="true" />
-        <div className="portfolio-header-banner-strip">
-          <Container fluid className="portfolio-hero-container">
-            <Row className="portfolio-hero-row g-0">
-              <Col md={5} className="portfolio-hero-left">
-                <div className="portfolio-hero-welcome">
-                  <h2 className="portfolio-hero-welcome-title">Welcome</h2>
-                  <p className="portfolio-hero-welcome-text">Stores, landing pages, and brands. Let&apos;s work together.</p>
+        <div className="portfolio-hero-brand-banner">
+          <Container fluid className="portfolio-hero-container px-3">
+            <h1 className="visually-hidden">aawebstudios — web and digital studio</h1>
+            <AaWebStudiosBanner className="aa-banner--hero" />
+            <div className="portfolio-hero-brand-cta">
+              <Button as={Link} to="/shop1" variant="primary" size="lg" className="portfolio-hero-btn">
+                Get in touch →
+              </Button>
+              <div className="portfolio-hero-social">
+                {SOCIAL_LINKS.map(({ Icon, href, label }) => (
+                  <a key={label} href={href} className="portfolio-social-icon" aria-label={label}>
+                    <Icon size={22} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </div>
+      </header>
+
+      <section className="portfolio-what-we-do" id="services">
+        <RevealOnScroll>
+          <Container>
+            <Row className="align-items-start g-4 g-lg-5">
+              <Col lg={6}>
+                <div className="portfolio-wwd-kicker">
+                  <span className="portfolio-wwd-kicker-mark" aria-hidden />
+                  <span className="portfolio-wwd-kicker-text">What we do</span>
                 </div>
+                <h2 className="portfolio-wwd-headline">
+                  We build robust digital tools &amp; deliver quality design outcomes
+                </h2>
+                <p className="portfolio-wwd-lede">
+                  We partner with teams who want clarity over chaos: thoughtful UX, maintainable builds, and launch rhythms you can plan around.
+                  Whether it is an accessible brochure site, a storefront, or a larger web application, we bring ideas forward with visuals that
+                  match your brand and behaviour that holds up on real devices — so your site earns trust and keeps working after go-live.
+                </p>
+                <Link to="/who-we-are" className="portfolio-wwd-cta">
+                  See all of our services →
+                </Link>
               </Col>
-              <Col md={7} className="portfolio-hero-right">
-                <div className="portfolio-hero-block portfolio-hero-block-gray">
-                  <h1 className="portfolio-hero-title">From Concept to Launch</h1>
-                  <p className="portfolio-hero-subtitle">Web &amp; digital studio — we design and build sites that work.</p>
-                </div>
-                <div className="portfolio-hero-block portfolio-hero-block-brown">
-                  <Button as={Link} to="/shop1" variant="primary" size="lg" className="portfolio-hero-btn">
-                    Get in touch →
-                  </Button>
-                  <div className="portfolio-hero-social">
-                    {SOCIAL_LINKS.map(({ Icon, href, label }) => (
-                      <a key={label} href={href} className="portfolio-social-icon" aria-label={label}>
-                        <Icon size={22} />
-                      </a>
-                    ))}
-                  </div>
+              <Col lg={6}>
+                <div className="portfolio-wwd-accordion">
+                  {WHAT_WE_DO_SERVICES.map((item) => {
+                    const expanded = whatWeDoOpenId === item.id;
+                    return (
+                      <div key={item.id} className={`portfolio-wwd-item${expanded ? ' portfolio-wwd-item-open' : ''}`}>
+                        <button
+                          type="button"
+                          className="portfolio-wwd-trigger"
+                          aria-expanded={expanded}
+                          aria-controls={`wwd-panel-${item.id}`}
+                          id={`wwd-trigger-${item.id}`}
+                          onClick={() =>
+                            setWhatWeDoOpenId((prev) => (prev === item.id ? null : item.id))
+                          }
+                        >
+                          <span className="portfolio-wwd-trigger-label">{item.label}</span>
+                          <span className="portfolio-wwd-trigger-icon" aria-hidden>
+                            {expanded ? '−' : '+'}
+                          </span>
+                        </button>
+                        <div
+                          id={`wwd-panel-${item.id}`}
+                          role="region"
+                          aria-labelledby={`wwd-trigger-${item.id}`}
+                          className="portfolio-wwd-panel"
+                          hidden={!expanded}
+                        >
+                          <p>{item.detail}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </Col>
             </Row>
           </Container>
-        </div>
-      </header>
+        </RevealOnScroll>
+      </section>
 
       <section className="portfolio-skills">
         <RevealOnScroll>

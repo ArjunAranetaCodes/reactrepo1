@@ -1,7 +1,9 @@
 .App {
   min-height: 100vh;
   background: #ffffff;
-  overflow-x: hidden;
+  /* Do not use overflow-x: hidden here — it forces overflow-y to compute to `auto`,
+     which creates a nested scroll container (double scrollbar). Horizontal clipping
+     is handled per-page where needed (e.g. marquee). */
 }
 
 /* Portfolio front page: full template style */

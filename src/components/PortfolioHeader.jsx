@@ -1,10 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './PortfolioHeader.css';
 
 const NAV_ITEMS = [
-  { label: 'Home', path: '/' },
-  { label: 'About Us', path: '/', hash: '#about' },
+  { label: 'Home', path: '/', end: true },
+  { label: 'Who we are', path: '/who-we-are' },
   { label: 'Our Works', path: '/', hash: '#portfolio' },
   { label: 'Our Blog', path: '/', hash: '#contact' },
 ];
@@ -12,10 +12,10 @@ const NAV_ITEMS = [
 function PortfolioHeader() {
   const location = useLocation();
 
-  const handleClick = (e, item) => {
-    if (item.hash && location.pathname === '/') {
+  const handleHashClick = (e, hash) => {
+    if (location.pathname === '/') {
       e.preventDefault();
-      const el = document.querySelector(item.hash);
+      const el = document.querySelector(hash);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -24,7 +24,7 @@ function PortfolioHeader() {
     <header className="portfolio-header">
       <Container>
         <Navbar className="portfolio-navbar px-0 py-3" expand="md">
-          <Navbar.Brand as={Link} to="/" className="portfolio-logo">
+          <Navbar.Brand as={NavLink} to="/" className="portfolio-logo">
             <span className="portfolio-logo-box">aawebstudios</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="portfolio-nav" className="portfolio-nav-toggle" />
@@ -34,16 +34,22 @@ function PortfolioHeader() {
                 <Nav.Item as="li" key={item.label}>
                   {item.hash ? (
                     <a
-                      href={item.hash}
+                      href={`${item.path}${item.hash}`}
                       className="portfolio-nav-link"
-                      onClick={(e) => handleClick(e, item)}
+                      onClick={(e) => handleHashClick(e, item.hash)}
                     >
                       {item.label}
                     </a>
                   ) : (
-                    <Link to={item.path} className="portfolio-nav-link">
+                    <NavLink
+                      to={item.path}
+                      end={item.end ?? false}
+                      className={({ isActive }) =>
+                        `portfolio-nav-link${isActive ? ' portfolio-nav-link-active' : ''}`
+                      }
+                    >
                       {item.label}
-                    </Link>
+                    </NavLink>
                   )}
                 </Nav.Item>
               ))}

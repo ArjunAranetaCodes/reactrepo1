@@ -1,38 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
-import { shopSlugs, getShopConfig } from '../shops';
 import shop1Thumb from '../thumbnails/shop1.png';
 import shop2Thumb from '../thumbnails/shop2.png';
 import shop3Thumb from '../thumbnails/shop3.png';
 import shop4Thumb from '../thumbnails/shop4.png';
-import companyWebsiteThumb from '../thumbnails/company-website.png';
-import terraNovaThumb from '../thumbnails/terra-nova.png';
 import healthCenterThumb from '../thumbnails/health-center.png';
-import softLandingThumb from '../thumbnails/soft-landing.png';
 import cloudSyncThumb from '../thumbnails/cloud-sync.png';
 import RevealOnScroll from './RevealOnScroll';
 import AaWebStudiosBanner from '../../components/AaWebStudiosBanner';
 import './Portfolio.css';
-
-const THUMBNAILS = {
-  shop1: shop1Thumb,
-  shop2: shop2Thumb,
-  shop3: shop3Thumb,
-  shop4: shop4Thumb,
-  'company-website': companyWebsiteThumb,
-  'travel-site': terraNovaThumb,
-  services1: healthCenterThumb,
-  services2: softLandingThumb,
-  services3: cloudSyncThumb,
-};
-
-const SKILLS = [
-  { name: 'WordPress', text: 'Themes, plugins, and headless setups.', icon: '📝' },
-  { name: 'React.js', text: 'Fast, modern front-end applications.', icon: '⚛️' },
-  { name: 'Java', text: 'Backend services, APIs, and enterprise applications.', icon: '☕' },
-];
 
 const WHAT_WE_DO_SERVICES = [
   {
@@ -73,24 +51,70 @@ const WHAT_WE_DO_SERVICES = [
   },
 ];
 
-// Build SITES from shop configs + company sites + any external links
-const SITES = [
-  ...shopSlugs.map((slug) => {
-    const config = getShopConfig(slug);
-    return {
-      id: slug,
-      title: config.name,
-      category: 'STORES',
-      url: `/${slug}`,
-      internal: true,
-      image: THUMBNAILS[slug] ?? `https://via.placeholder.com/400x280/6b7c9a/fff?text=${encodeURIComponent(config.name)}`,
-    };
-  }),
-  { id: 'company-website', title: 'Green Energy', category: 'COMPANY', url: '/company-website', internal: true, image: THUMBNAILS['company-website'] ?? 'https://via.placeholder.com/400x280/63b54c/fff?text=Green+Energy' },
-  { id: 'travel-site', title: 'Terra Nova', category: 'TRAVEL', url: '/travel-site', internal: true, image: THUMBNAILS['travel-site'] ?? 'https://via.placeholder.com/400x280/148aa8/fff?text=Terra+Nova' },
-  { id: 'services1', title: 'Health Center', category: 'SERVICES', url: '/services1', internal: true, image: THUMBNAILS.services1 ?? 'https://via.placeholder.com/400x280/a5c422/fff?text=Health+Center' },
-  { id: 'services2', title: 'Soft Landing', category: 'SERVICES', url: '/services2', internal: true, image: THUMBNAILS.services2 ?? 'https://via.placeholder.com/400x280/29ca8e/fff?text=Soft+Landing' },
-  { id: 'services3', title: 'CloudSync', category: 'SERVICES', url: '/services3', internal: true, image: THUMBNAILS.services3 ?? 'https://via.placeholder.com/400x280/6366f1/fff?text=CloudSync' },
+const WORK_FILTERS = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'web-design', label: 'Web Design' },
+  { id: 'development', label: 'Development' },
+  { id: 'branding', label: 'Branding' },
+  { id: 'seo', label: 'SEO' },
+];
+
+/** Showcase projects — copy/layout aligned with portfolio hero; links point at live demos */
+const WORK_PROJECTS = [
+  {
+    id: 'vertex',
+    title: 'Vertex Marketing',
+    tagline: 'Elevate your business.',
+    serviceLabel: 'Website Redesign',
+    filters: ['web-design', 'seo'],
+    url: '/shop1',
+    image: shop1Thumb,
+  },
+  {
+    id: 'nexa',
+    title: 'Nexa Logistics',
+    tagline: 'Built for speed. Designed to scale.',
+    serviceLabel: 'Custom Website',
+    filters: ['development'],
+    url: '/shop2',
+    image: shop2Thumb,
+  },
+  {
+    id: 'luma',
+    title: 'Luma Consulting',
+    tagline: 'Clarity. Strategy. Results.',
+    serviceLabel: 'Website Redesign',
+    filters: ['web-design', 'branding'],
+    url: '/shop3',
+    image: shop3Thumb,
+  },
+  {
+    id: 'horizon',
+    title: 'Horizon Real Estate',
+    tagline: 'Real estate made simple.',
+    serviceLabel: 'Custom Website',
+    filters: ['development', 'seo'],
+    url: '/shop4',
+    image: shop4Thumb,
+  },
+  {
+    id: 'medix',
+    title: 'Medix Health',
+    tagline: 'Innovative healthcare solutions.',
+    serviceLabel: 'Custom Website',
+    filters: ['development'],
+    url: '/services1',
+    image: healthCenterThumb,
+  },
+  {
+    id: 'edutech',
+    title: 'EduTech Academy',
+    tagline: 'Where learning meets innovation.',
+    serviceLabel: 'Website Redesign',
+    filters: ['web-design', 'branding'],
+    url: '/services3',
+    image: cloudSyncThumb,
+  },
 ];
 
 const SOCIAL_LINKS = [
@@ -105,6 +129,12 @@ function Portfolio() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [whatWeDoOpenId, setWhatWeDoOpenId] = useState(null);
+  const [workFilter, setWorkFilter] = useState('all');
+
+  const filteredWorkProjects =
+    workFilter === 'all'
+      ? WORK_PROJECTS
+      : WORK_PROJECTS.filter((p) => p.filters.includes(workFilter));
 
   useEffect(() => {
     const hash = location.hash?.replace(/^#/, '');
@@ -207,54 +237,60 @@ function Portfolio() {
         </RevealOnScroll>
       </section>
 
-      <section className="portfolio-skills">
-        <RevealOnScroll>
-          <Container>
-            <h2 className="portfolio-section-title text-center mb-4">What we use</h2>
-            <Row className="g-4 justify-content-center">
-              {SKILLS.map((s, index) => (
-                <Col key={s.name} xs={12} sm={6} md={6} lg={3}>
-                  <RevealOnScroll className="h-100" delayMs={index * 90}>
-                    <Card className="portfolio-skill-card h-100 border-0">
-                      <Card.Body className="text-center p-4">
-                        <span className="portfolio-skill-icon">{s.icon}</span>
-                        <Card.Title className="portfolio-skill-name">{s.name}</Card.Title>
-                        <Card.Text className="portfolio-skill-text">{s.text}</Card.Text>
-                      </Card.Body>
-                    </Card>
-                  </RevealOnScroll>
-                </Col>
-              ))}
-            </Row>
-          </Container>
-        </RevealOnScroll>
-      </section>
-
-      <section id="portfolio" className="portfolio-works">
+      <section id="portfolio" className="portfolio-works" aria-labelledby="portfolio-heading">
         <Container>
           <RevealOnScroll>
-            <h2 className="portfolio-section-title text-center mb-5">Our Works</h2>
+            <header className="portfolio-works-header">
+              <p className="portfolio-work-section-label">Our work</p>
+              <h2 id="portfolio-heading" className="portfolio-work-headline">
+                Digital experiences that drive results.
+              </h2>
+              <p className="portfolio-work-lede">
+                We partner with businesses to create custom websites and digital solutions that are beautiful,
+                functional, and built to convert.
+              </p>
+            </header>
           </RevealOnScroll>
-          <Row className="g-4">
-            {SITES.map((site, index) => (
-              <Col key={site.id} xs={12} sm={6} lg={4}>
-                <RevealOnScroll className="h-100" delayMs={index * 75}>
-                  <Card className="portfolio-work-card border-0 h-100">
-                    <div className="portfolio-work-image-wrap">
-                      <img src={site.image} alt={site.title} className="portfolio-work-image" />
-                    </div>
-                    <Card.Body className="p-3">
-                      <span className="portfolio-work-category">{site.category}</span>
-                      <Card.Title className="portfolio-work-title">{site.title}</Card.Title>
-                      {site.internal ? (
-                        <Button as={Link} to={site.url} variant="link" className="portfolio-work-link p-0 text-decoration-none">
-                          View site →
-                        </Button>
-                      ) : (
-                        <a href={site.url} className="portfolio-work-link text-decoration-none">View site →</a>
-                      )}
-                    </Card.Body>
-                  </Card>
+          <RevealOnScroll delayMs={40}>
+            <div className="portfolio-work-filters" role="group" aria-label="Filter projects by category">
+              {WORK_FILTERS.map(({ id, label }) => {
+                const active = workFilter === id;
+                return (
+                  <button
+                    key={id}
+                    type="button"
+                    className="portfolio-work-filter-btn"
+                    aria-pressed={active}
+                    data-active={active}
+                    onClick={() => setWorkFilter(id)}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          </RevealOnScroll>
+          <Row className="g-4 portfolio-work-grid">
+            {filteredWorkProjects.map((project, index) => (
+              <Col key={project.id} xs={12} md={6}>
+                <RevealOnScroll className="h-100" delayMs={index * 60}>
+                  <article className="portfolio-work-card h-100">
+                    <Link to={project.url} className="portfolio-work-card-link">
+                      <div className="portfolio-work-image-wrap">
+                        <img src={project.image} alt="" className="portfolio-work-image" />
+                        <p className="portfolio-work-tagline">{project.tagline}</p>
+                      </div>
+                      <div className="portfolio-work-footer">
+                        <div className="portfolio-work-footer-text">
+                          <h3 className="portfolio-work-title">{project.title}</h3>
+                          <p className="portfolio-work-service">{project.serviceLabel}</p>
+                        </div>
+                        <span className="portfolio-work-arrow" aria-hidden>
+                          →
+                        </span>
+                      </div>
+                    </Link>
+                  </article>
                 </RevealOnScroll>
               </Col>
             ))}

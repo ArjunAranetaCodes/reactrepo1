@@ -19,8 +19,7 @@
 .portfolio-wwd-headline,
 .portfolio-hero-title,
 .portfolio-section-title,
-.portfolio-work-title,
-.portfolio-skill-name,
+.portfolio-work-headline,
 .portfolio-footer-tagline {
   font-family: var(--portfolio-font-display);
   font-weight: 600;
@@ -41,8 +40,15 @@
   line-height: 1.2;
 }
 
-.portfolio-work-title,
-.portfolio-skill-name {
+.portfolio-work-headline {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.portfolio-work-title {
+  font-family: var(--portfolio-font-body);
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.25;
 }
@@ -58,17 +64,29 @@
   line-height: 1.65;
 }
 
-.portfolio-skill-text {
-  line-height: 1.55;
-}
-
-.portfolio-work-category {
+.portfolio-work-section-label,
+.portfolio-work-lede,
+.portfolio-work-service,
+.portfolio-work-filter-btn {
   font-family: var(--portfolio-font-body);
-  font-weight: 600;
-  letter-spacing: 0.08em;
 }
 
-.portfolio-work-link,
+.portfolio-work-section-label {
+  font-weight: 700;
+}
+
+.portfolio-work-lede {
+  font-weight: 400;
+}
+
+.portfolio-work-service {
+  font-weight: 500;
+}
+
+.portfolio-work-filter-btn {
+  font-weight: 600;
+}
+
 .portfolio-hero-btn {
   font-family: var(--portfolio-font-body);
   font-weight: 600;

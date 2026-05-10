@@ -20,6 +20,7 @@
 .portfolio-hero-title,
 .portfolio-section-title,
 .portfolio-work-headline,
+.portfolio-hww-step-title,
 .portfolio-footer-tagline {
   font-family: var(--portfolio-font-display);
   font-weight: 600;
@@ -44,6 +45,10 @@
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.15;
+}
+
+.portfolio-hww-step-title {
+  font-weight: 700;
 }
 
 .portfolio-work-title {

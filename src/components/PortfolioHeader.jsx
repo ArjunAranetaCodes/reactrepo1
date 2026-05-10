@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { label: 'Home', path: '/', end: true },
   { label: 'Who we are', path: '/who-we-are' },
   { label: 'Our Works', path: '/', hash: '#portfolio' },
+  { label: 'How we work', path: '/', hash: '#how-we-work' },
   { label: 'Our Blog', path: '/', hash: '#contact' },
 ];
 

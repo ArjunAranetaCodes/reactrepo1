@@ -10,6 +10,7 @@ import healthCenterThumb from '../thumbnails/health-center.png';
 import cloudSyncThumb from '../thumbnails/cloud-sync.png';
 import RevealOnScroll from './RevealOnScroll';
 import AaWebStudiosBanner from '../../components/AaWebStudiosBanner';
+import { HowWeWorkStepArt } from './how-we-work-illustrations';
 import './Portfolio.css';
 
 const WHAT_WE_DO_SERVICES = [
@@ -117,6 +118,45 @@ const WORK_PROJECTS = [
   },
 ];
 
+const HOW_WE_WORK_STEPS = [
+  {
+    id: 'discovery',
+    title: 'Discovery',
+    description:
+      'We align on goals, audiences, and constraints so scope stays honest and every later decision maps back to outcomes.',
+  },
+  {
+    id: 'wireframing',
+    title: 'Wireframing',
+    description:
+      'Low-fidelity layouts and flows validate structure early — fewer surprises when visuals and content land.',
+  },
+  {
+    id: 'ui-design',
+    title: 'UI Design',
+    description:
+      'A cohesive visual system: typography, colour, components, and accessible patterns you can reuse beyond launch.',
+  },
+  {
+    id: 'development',
+    title: 'Development',
+    description:
+      'Clean, performant builds matched to your stack — maintainable code, sensible integrations, and solid QA.',
+  },
+  {
+    id: 'launch',
+    title: 'Launch',
+    description:
+      'Deployment, checks, and handover done methodically so go-live day feels calm rather than chaotic.',
+  },
+  {
+    id: 'optimization',
+    title: 'Optimization',
+    description:
+      'Analytics, speed, SEO hygiene, and iterative improvements — turning launch into a baseline, not a finish line.',
+  },
+];
+
 const SOCIAL_LINKS = [
   { Icon: Facebook, href: '#', label: 'Facebook' },
   { Icon: Twitter, href: '#', label: 'Twitter' },
@@ -139,7 +179,7 @@ function Portfolio() {
   useEffect(() => {
     const hash = location.hash?.replace(/^#/, '');
     if (!hash) return undefined;
-    const allowed = new Set(['about', 'services', 'portfolio', 'contact']);
+    const allowed = new Set(['about', 'services', 'portfolio', 'how-we-work', 'contact']);
     if (!allowed.has(hash)) return undefined;
     const t = window.setTimeout(() => {
       document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -295,6 +335,38 @@ function Portfolio() {
               </Col>
             ))}
           </Row>
+        </Container>
+      </section>
+
+      <section id="how-we-work" className="portfolio-how-we-work" aria-labelledby="how-we-work-heading">
+        <Container>
+          <RevealOnScroll>
+            <header className="portfolio-hww-header">
+              <p className="portfolio-work-section-label portfolio-hww-kicker">How we work</p>
+              <h2 id="how-we-work-heading" className="portfolio-work-headline">
+                A clear process from first conversation to continuous improvement.
+              </h2>
+              <p className="portfolio-work-lede portfolio-hww-lede">
+                Transparency builds trust. Here is how we move projects forward — so you always know what happens next.
+              </p>
+            </header>
+          </RevealOnScroll>
+          <ol className="portfolio-hww-timeline list-unstyled">
+            {HOW_WE_WORK_STEPS.map((step, index) => (
+              <li key={step.id} className="portfolio-hww-step">
+                <RevealOnScroll delayMs={index * 70}>
+                  <div className="portfolio-hww-step-card">
+                    <div className="portfolio-hww-art" aria-hidden>
+                      <HowWeWorkStepArt stepId={step.id} className="portfolio-hww-svg" />
+                    </div>
+                    <span className="portfolio-hww-index">{String(index + 1).padStart(2, '0')}</span>
+                    <h3 className="portfolio-hww-step-title">{step.title}</h3>
+                    <p className="portfolio-hww-step-text">{step.description}</p>
+                  </div>
+                </RevealOnScroll>
+              </li>
+            ))}
+          </ol>
         </Container>
       </section>
 

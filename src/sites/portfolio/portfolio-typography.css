@@ -18,6 +18,7 @@
 /* Display font — major headings */
 .portfolio-wwd-headline,
 .portfolio-hero-title,
+.portfolio-hero-headline,
 .portfolio-section-title,
 .portfolio-work-headline,
 .portfolio-hww-step-title,
@@ -31,7 +32,8 @@
   line-height: 1.18;
 }
 
-.portfolio-hero-title {
+.portfolio-hero-title,
+.portfolio-hero-headline {
   letter-spacing: -0.03em;
   line-height: 1.15;
 }

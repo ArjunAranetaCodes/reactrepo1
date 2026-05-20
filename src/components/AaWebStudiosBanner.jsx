@@ -19,7 +19,7 @@ function usePrefersReducedMotion() {
 /**
  * Animated SVG wordmark for the portfolio hero — shifting brand gradient + accent line.
  */
-export default function AaWebStudiosBanner({ className = '' }) {
+export default function AaWebStudiosBanner({ className = '', showTagline = true }) {
   const uid = useId().replace(/:/g, '');
   const gradId = `aa-grad-${uid}`;
   const lineGradId = `aa-line-${uid}`;
@@ -108,7 +108,9 @@ export default function AaWebStudiosBanner({ className = '' }) {
         )}
       </svg>
 
-      <p className="aa-banner-tagline">From concept to launch — sites that work.</p>
+      {showTagline && (
+        <p className="aa-banner-tagline">From concept to launch — sites that work.</p>
+      )}
     </div>
   );
 }

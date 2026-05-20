@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
+import { Facebook, Twitter, Instagram, CheckCircleFill, ArrowRight } from 'react-bootstrap-icons';
 import shop1Thumb from '../thumbnails/shop1.png';
 import shop2Thumb from '../thumbnails/shop2.png';
 import shop3Thumb from '../thumbnails/shop3.png';
@@ -157,6 +157,12 @@ const HOW_WE_WORK_STEPS = [
   },
 ];
 
+const HERO_TRUST_POINTS = [
+  'Strategy-led UX & design',
+  'Performance-focused builds',
+  'Launch support & iteration',
+];
+
 const SOCIAL_LINKS = [
   { Icon: Facebook, href: '#', label: 'Facebook' },
   { Icon: Twitter, href: '#', label: 'Twitter' },
@@ -167,7 +173,9 @@ function Portfolio() {
   const location = useLocation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [heroEmail, setHeroEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [heroSubmitted, setHeroSubmitted] = useState(false);
   const [whatWeDoOpenId, setWhatWeDoOpenId] = useState(null);
   const [workFilter, setWorkFilter] = useState('all');
 
@@ -192,25 +200,133 @@ function Portfolio() {
     setSubmitted(true);
   };
 
+  const handleHeroLeadSubmit = (e) => {
+    e.preventDefault();
+    setHeroSubmitted(true);
+    if (heroEmail.trim()) {
+      setEmail(heroEmail.trim());
+    }
+    window.setTimeout(() => {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
+  };
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="portfolio-page">
-      {/* Header: brand banner (SVG + CTA on gradient only — no photo) */}
+      {/* Hero — value proposition, lead capture, trust signals */}
       <header className="portfolio-header-banner" id="about">
         <div className="portfolio-hero-brand-banner">
           <Container fluid className="portfolio-hero-container px-3">
-            <h1 className="visually-hidden">aawebstudios — web and digital studio</h1>
-            <AaWebStudiosBanner className="aa-banner--hero" />
-            <div className="portfolio-hero-brand-cta">
-              <Button as={Link} to="/shop1" variant="primary" size="lg" className="portfolio-hero-btn">
-                Get in touch →
-              </Button>
-              <div className="portfolio-hero-social">
-                {SOCIAL_LINKS.map(({ Icon, href, label }) => (
-                  <a key={label} href={href} className="portfolio-social-icon" aria-label={label}>
-                    <Icon size={22} />
-                  </a>
-                ))}
+            <h1 className="visually-hidden">
+              aawebstudios — web design and development studio for teams that need to convert more leads
+            </h1>
+            <div className="portfolio-hero-layout">
+              <div className="portfolio-hero-main">
+                <AaWebStudiosBanner className="aa-banner--hero aa-banner--hero-compact" showTagline={false} />
+                <p className="portfolio-hero-eyebrow">Web &amp; digital studio</p>
+                <h2 className="portfolio-hero-headline">
+                  Websites and platforms built to earn trust—and turn visitors into leads.
+                </h2>
+                <p className="portfolio-hero-lede">
+                  We partner with growing businesses on strategy, design, and development—so your site looks
+                  credible, loads fast, and gives prospects a clear reason to reach out.
+                </p>
+
+                <div className="portfolio-hero-lead-block" aria-label="Request a project consultation">
+                  {heroSubmitted ? (
+                    <p className="portfolio-hero-lead-success" role="status">
+                      Thanks—we&apos;ll follow up shortly. Share a few more details below if you like.
+                    </p>
+                  ) : (
+                    <Form className="portfolio-hero-lead-form" onSubmit={handleHeroLeadSubmit}>
+                      <Form.Label htmlFor="hero-lead-email" className="visually-hidden">
+                        Work email
+                      </Form.Label>
+                      <Form.Control
+                        id="hero-lead-email"
+                        type="email"
+                        className="portfolio-hero-lead-input"
+                        placeholder="you@company.com"
+                        value={heroEmail}
+                        onChange={(e) => setHeroEmail(e.target.value)}
+                        required
+                        autoComplete="email"
+                      />
+                      <Button type="submit" size="lg" className="portfolio-hero-btn portfolio-hero-btn-primary">
+                        Book a free consult
+                        <ArrowRight className="portfolio-hero-btn-icon" aria-hidden />
+                      </Button>
+                    </Form>
+                  )}
+                  <p className="portfolio-hero-lead-note">
+                    Typical response within one business day. No spam—just a focused conversation about your goals.
+                  </p>
+                </div>
+
+                <div className="portfolio-hero-cta-row">
+                  <Button
+                    variant="link"
+                    className="portfolio-hero-link-btn"
+                    href="#portfolio"
+                    onClick={(e) => scrollToSection(e, 'portfolio')}
+                  >
+                    View selected work
+                  </Button>
+                  <span className="portfolio-hero-cta-divider" aria-hidden>
+                    ·
+                  </span>
+                  <Button
+                    variant="link"
+                    className="portfolio-hero-link-btn"
+                    href="#how-we-work"
+                    onClick={(e) => scrollToSection(e, 'how-we-work')}
+                  >
+                    How we work
+                  </Button>
+                </div>
               </div>
+
+              <aside className="portfolio-hero-aside" aria-label="Why teams work with us">
+                <ul className="portfolio-hero-trust-list">
+                  {HERO_TRUST_POINTS.map((point) => (
+                    <li key={point}>
+                      <CheckCircleFill className="portfolio-hero-trust-icon" aria-hidden />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="portfolio-hero-proof-card">
+                  <p className="portfolio-hero-proof-stat">
+                    <span className="portfolio-hero-proof-number">6+</span>
+                    <span className="portfolio-hero-proof-label">live demos in our portfolio</span>
+                  </p>
+                  <p className="portfolio-hero-proof-copy">
+                    From marketing sites to SaaS-style products—each build is structured for clarity, speed, and
+                    conversion-ready UX.
+                  </p>
+                  <Button
+                    variant="outline-light"
+                    size="sm"
+                    className="portfolio-hero-proof-btn"
+                    href="#contact"
+                    onClick={(e) => scrollToSection(e, 'contact')}
+                  >
+                    Talk through your project
+                  </Button>
+                </div>
+                <div className="portfolio-hero-social">
+                  {SOCIAL_LINKS.map(({ Icon, href, label }) => (
+                    <a key={label} href={href} className="portfolio-social-icon" aria-label={label}>
+                      <Icon size={20} />
+                    </a>
+                  ))}
+                </div>
+              </aside>
             </div>
           </Container>
         </div>

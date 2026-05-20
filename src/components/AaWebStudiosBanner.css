@@ -83,3 +83,25 @@
     filter: drop-shadow(0 2px 12px rgba(69, 64, 64, 0.18));
   }
 }
+
+/* Compact wordmark when hero carries the main headline */
+.aa-banner--hero-compact {
+  max-width: min(640px, 100%);
+}
+
+.aa-banner--hero-compact .aa-banner-text {
+  font-size: clamp(28px, 5vw, 44px);
+}
+
+.aa-banner--hero-compact .aa-banner-svg {
+  filter:
+    drop-shadow(0 3px 20px rgba(0, 0, 0, 0.18))
+    drop-shadow(0 1px 8px rgba(255, 245, 154, 0.28));
+}
+
+@media (min-width: 992px) {
+  .portfolio-hero-main .aa-banner--hero-compact {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
